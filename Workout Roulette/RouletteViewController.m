@@ -7,6 +7,11 @@
 //
 
 #import "RouletteViewController.h"
+#import "MBProgressHUD.h"
+#import <CloudMine/CloudMine.h>
+#import "WRWorkoutViewController.h"
+#import "WRWorkout.h"
+#import "WRExercise.h"
 
 @interface RouletteViewController ()<UIPickerViewDelegate>
 @property UIPickerView* timePickerView;
@@ -40,7 +45,16 @@
     [self.view addSubview:workoutPickerView];
     [workoutPickerView selectRow:1 inComponent:0 animated:NO];
     [timePickerView selectRow:1 inComponent:0 animated:NO];
-    
+    /*
+    WRExercise* ex = [[WRExercise alloc] init];
+    ex.type = @"Running";
+    ex.duration = [NSNumber numberWithInt:120];
+    ex.description = @"Time to take some LSD... long, slow, distance. Run for two hours, real easy-like.";
+    [ex save:^(id response)
+    {
+        NSLog(@"Saved!: %@", response);
+    } ];
+    */
     UIButton * createWorkout=[UIButton buttonWithType:UIButtonTypeRoundedRect];
     createWorkout.frame=CGRectMake(screenWidth*.5-50, screenHeight*.8, 100, 50);
     //createWorkout.backgroundColor=[UIColor blueColor];
@@ -60,9 +74,21 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
--(void) createWorkout:(UIButton *) sender
+-(IBAction) createWorkout:(UIButton *) sender
 {
     
+    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Making Workout....";
+    
+    CMStore* store = [CMStore defaultStore];
+    [store allObjectsOfClass:[WRExercise class] additionalOptions:nil callback:^(CMObjectFetchResponse* response){
+        [hud hide:YES];
+        WRWorkoutViewController* workout = [[WRWorkoutViewController alloc] initWithCMStore:response.objects];
+        [self presentModalViewController:workout animated:YES];
+        
+        NSLog(@"%@", response);
+        
+    }];
 }
 
 #pragma mark - UIPickerViewDelegate
@@ -118,6 +144,7 @@
     }
     return title;
 }
+
 
 // tell the picker the width of each row for a given component
 /*- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {

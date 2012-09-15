@@ -13,6 +13,7 @@
 		C3223C8B16042F54006EBC60 /* WRWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3223C8A16042F54006EBC60 /* WRWorkoutViewController.m */; };
 		C3223C8E1604315B006EBC60 /* green paper.png in Resources */ = {isa = PBXBuildFile; fileRef = C3223C8D1604315B006EBC60 /* green paper.png */; };
 		C3223C9116043641006EBC60 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3223C9016043641006EBC60 /* MediaPlayer.framework */; };
+		C3223C9416044056006EBC60 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C3223C9316044016006EBC60 /* MBProgressHUD.m */; };
 		C3F1692316040E6A00C0CE12 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692216040E6A00C0CE12 /* UIKit.framework */; };
 		C3F1692516040E6A00C0CE12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692416040E6A00C0CE12 /* Foundation.framework */; };
 		C3F1692716040E6A00C0CE12 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692616040E6A00C0CE12 /* CoreGraphics.framework */; };
@@ -39,6 +40,8 @@
 		C3223C8A16042F54006EBC60 /* WRWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRWorkoutViewController.m; sourceTree = "<group>"; };
 		C3223C8D1604315B006EBC60 /* green paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green paper.png"; sourceTree = "<group>"; };
 		C3223C9016043641006EBC60 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		C3223C9216044016006EBC60 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		C3223C9316044016006EBC60 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		C3F1691E16040E6A00C0CE12 /* Workout Roulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Workout Roulette.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F1692216040E6A00C0CE12 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3F1692416040E6A00C0CE12 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -93,6 +96,8 @@
 		C3223C8F16043160006EBC60 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C3223C9216044016006EBC60 /* MBProgressHUD.h */,
+				C3223C9316044016006EBC60 /* MBProgressHUD.m */,
 				C3223C8D1604315B006EBC60 /* green paper.png */,
 			);
 			name = Resources;
@@ -224,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3223C9416044056006EBC60 /* MBProgressHUD.m in Sources */,
 				C3F1693116040E6A00C0CE12 /* main.m in Sources */,
 				C3F1693516040E6A00C0CE12 /* WRAppDelegate.m in Sources */,
 				C3F1693816040E6A00C0CE12 /* Workout_Roulette.xcdatamodeld in Sources */,
@@ -308,7 +314,7 @@
 				GCC_PREFIX_HEADER = "Workout Roulette/Workout Roulette-Prefix.pch";
 				INFOPLIST_FILE = "Workout Roulette/Workout Roulette-Info.plist";
 				OTHER_LDFLAGS = (
-					"-all-load",
+					"-all_load",
 					"-Objc",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -327,7 +333,7 @@
 				GCC_PREFIX_HEADER = "Workout Roulette/Workout Roulette-Prefix.pch";
 				INFOPLIST_FILE = "Workout Roulette/Workout Roulette-Info.plist";
 				OTHER_LDFLAGS = (
-					"-all-load",
+					"-all_load",
 					"-Objc",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";

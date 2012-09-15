@@ -15,13 +15,32 @@
 @property (nonatomic, strong) UILabel* timer;
 @property (nonatomic, strong) UIButton* done;
 @property (nonatomic, strong) MPMusicPlayerController* musicPlayer;
+<<<<<<< HEAD
 @property (nonatomic, strong) MPMediaPickerController* mediaPicker;
+=======
+@property (nonatomic, strong) NSArray* workout;
+>>>>>>> 11686594df640cc7ac1a5c2800bf7b897d9354ec
 
 @end
 
 @implementation WRWorkoutViewController
 
+<<<<<<< HEAD
 @synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker;
+=======
+@synthesize exerciseTitle, timer, done, musicPlayer, workout;
+
+
+-(id) initWithCMStore:(NSArray *)workouts
+{
+   self = [super init];
+    if(self)
+    {
+    self.workout = workouts;
+    }
+    return self;
+}
+>>>>>>> 11686594df640cc7ac1a5c2800bf7b897d9354ec
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,13 +71,17 @@
     }
     else
     {
-        UIButton* back = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        UIButton* play = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        UIButton* forward = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        UIButton* back = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton* play = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton* forward = [UIButton buttonWithType:UIButtonTypeCustom];
     
+        
+        
         back.frame = CGRectMake(0, 0, 80, 32);
-        play.frame = CGRectMake(0, 100, 80, 32);
-        forward.frame = CGRectMake(0, 200, 80, 32);
+        play.frame = CGRectMake(100, 0, 80, 32);
+        forward.frame = CGRectMake(200, 0, 80, 32);
+        back.backgroundColor = [UIColor blueColor];
+        
         [musicWidget addSubview:back];
         [musicWidget addSubview:play];
         [musicWidget addSubview:forward];
@@ -76,7 +99,7 @@
     timer.frame = CGRectMake(0, 0, 320, 100);
     timer.textAlignment = UITextAlignmentCenter;
     exerciseTitle = [[UILabel alloc] init];
-    exerciseTitle.text = @"30 Situps";
+    exerciseTitle.text = [[self.workout objectAtIndex:0] description];
     exerciseTitle.textAlignment = UITextAlignmentCenter;
     exerciseTitle.frame = CGRectMake(0, 100, 320, 60);
     [self.view addSubview:musicWidget];
