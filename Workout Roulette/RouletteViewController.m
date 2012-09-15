@@ -76,8 +76,9 @@
 }
 -(IBAction) createWorkout:(UIButton *) sender
 {
-    
-    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    WRWorkoutViewController* workout = [[WRWorkoutViewController alloc] initWithCMStore:nil];
+    [self presentModalViewController:workout animated:YES];
+    /*MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Making Workout....";
     
     CMStore* store = [CMStore defaultStore];
@@ -88,7 +89,7 @@
         
         NSLog(@"%@", response);
         
-    }];
+    }];*/
 }
 
 #pragma mark - UIPickerViewDelegate

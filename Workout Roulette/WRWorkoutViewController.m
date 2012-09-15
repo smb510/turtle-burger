@@ -50,32 +50,40 @@
     musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     UIView* musicWidget = [[UIView alloc] initWithFrame:CGRectMake(0, 160, 320, 140)];
     MPMediaItem* nowPlaying = [musicPlayer nowPlayingItem];
-    if (nowPlaying == nil)
-    {
+    //if (nowPlaying == nil)
+    //{
         UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [button setTitle:@"Select Playlist" forState:UIControlStateNormal];
         [button setFrame:CGRectMake(0, 0, 320, 48)];
         [button addTarget:self action:@selector(selectPlaylist:) forControlEvents:UIControlEventTouchUpInside];
         [musicWidget addSubview:button];
         
-    }
-    else
-    {
-        UIButton* back = [UIButton buttonWithType:UIButtonTypeCustom];
-        UIButton* play = [UIButton buttonWithType:UIButtonTypeCustom];
-        UIButton* forward = [UIButton buttonWithType:UIButtonTypeCustom];
+    //}
+    //else
+    //{
+        UIButton* back = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        UIButton* play = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        UIButton* forward = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
         
         
         back.frame = CGRectMake(0, 0, 80, 32);
+        [back setTitle:@"back" forState:UIControlStateNormal];
+    [back addTarget:self action:@selector(skipPrevious) forControlEvents:UIControlEventTouchUpInside];
         play.frame = CGRectMake(100, 0, 80, 32);
+        [play setTitle:@"play" forState:UIControlStateNormal];
+        [play addTarget:self action:@selector(togglePlayPause) forControlEvents:UIControlEventTouchUpInside];
         forward.frame = CGRectMake(200, 0, 80, 32);
+        [forward setTitle:@"skip" forState:UIControlStateNormal];
+    [forward addTarget:self action:@selector(skipNext) forControlEvents:UIControlEventTouchUpInside];
         back.backgroundColor = [UIColor blueColor];
+        play.backgroundColor=[UIColor blueColor];
+        forward.backgroundColor=[UIColor blueColor];
         
         [musicWidget addSubview:back];
         [musicWidget addSubview:play];
         [musicWidget addSubview:forward];
-    }
+    //}
     
     
     self.view = [[UIView alloc] init];
@@ -98,6 +106,8 @@
     [self.view addSubview:timer];
     [self.view setNeedsDisplay];
     
+    
+    
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
     [ notificationCenter
      addObserver: self
@@ -111,6 +121,8 @@
      object:musicPlayer];
     [musicPlayer beginGeneratingPlaybackNotifications];
     
+    [musicPlayer setQueueWithQuery: [MPMediaQuery songsQuery]];
+    [musicPlayer play];
     MPMusicPlayerController* ipodMusicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     
     [ipodMusicPlayer setShuffleMode: MPMusicShuffleModeOff];
@@ -132,7 +144,14 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
+-(void)handle_PlaybackStateChanged:(NSNotification *) notification
+{
+    
+}
+-(void)handle_NowPlayingItemChanged:(NSNotification *) notification
+{
+    
+}
 -(IBAction)selectPlaylist:(id)sender
 {
     mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
@@ -191,7 +210,14 @@
         [musicPlayer play];
     }
 }
-
+-(void) skipPrevious
+{
+    [musicPlayer skipToPreviousItem];
+}
+-(void) skipNext
+{
+    [musicPlayer skipToNextItem];
+}
 
 
 @end
