@@ -9,11 +9,12 @@
 #import "RouletteViewController.h"
 
 @interface RouletteViewController ()<UIPickerViewDelegate>
-
+@property UIPickerView* timePickerView;
+@property UIPickerView* workoutPickerView;
 @end
 
 @implementation RouletteViewController
-
+@synthesize timePickerView,workoutPickerView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,12 +27,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor=[UIColor grayColor];
     float screenWidth=[UIScreen mainScreen].bounds.size.width;
     float screenHeight=[UIScreen mainScreen].bounds.size.height;
-    UIPickerView* rouletteView= [[UIPickerView alloc] initWithFrame:CGRectMake(screenWidth*.5-100, screenHeight*.5-150, 200, 300)];
-    rouletteView.delegate=self;
-    rouletteView.showsSelectionIndicator=YES;
-    [self.view addSubview:rouletteView];
+    timePickerView= [[UIPickerView alloc] initWithFrame:CGRectMake(screenWidth*.5-100, screenHeight*.15-50, 200, 100)];
+    timePickerView.delegate=self;
+    timePickerView.showsSelectionIndicator=YES;
+    [self.view addSubview:timePickerView];
+    workoutPickerView= [[UIPickerView alloc] initWithFrame:CGRectMake(screenWidth*.5-150, screenHeight*.5-25, 300, 50)];
+    workoutPickerView.delegate=self;
+    workoutPickerView.showsSelectionIndicator=YES;
+    [self.view addSubview:workoutPickerView];
+    [workoutPickerView selectRow:1 inComponent:0 animated:NO];
+    [timePickerView selectRow:1 inComponent:0 animated:NO];
+    
+    UIButton * createWorkout=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    createWorkout.frame=CGRectMake(screenWidth*.5-50, screenHeight*.8, 100, 50);
+    //createWorkout.backgroundColor=[UIColor blueColor];
+    [createWorkout setTitle:@"Workout!" forState:UIControlStateNormal];
+    [createWorkout addTarget:self action:@selector(createWorkout:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:createWorkout];
 	// Do any additional setup after loading the view.
 }
 
@@ -45,6 +60,11 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+-(void) createWorkout:(UIButton *) sender
+{
+    
+}
+
 #pragma mark - UIPickerViewDelegate
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component {
     // Handle the selection
@@ -52,46 +72,57 @@
 
 // tell the picker how many rows are available for a given component
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    NSUInteger numRows = 5;
+    
+    NSUInteger numRows;
+    if(pickerView==timePickerView)
+    { 
+        numRows=11;
+    }
+    else if(pickerView==workoutPickerView)
+    {
+        numRows=3;
+    }
+    else 
+    {
+        numRows=0;
+    }
     
     return numRows;
 }
 
 // tell the picker how many components it will have
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 2;
+    return 1;
 }
 
 // tell the picker the title for a given component
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSString *title;
     //title = [@"" stringByAppendingFormat:@"%d",row];
-    switch(component)
+    if(pickerView==timePickerView)
+    { 
+        //Time options
+        int time=10;
+        time+=row*5;
+        title=[NSString stringWithFormat:@"%d minutes",time];
+    }
+    else if(pickerView==workoutPickerView)
     {
-        case 0:
-        {
-            //Time options
-            int time=10;
-            time+=row*5;
-            title=[NSString stringWithFormat:@"%d minutes",time];
-        }
-            break;
-        case 1:
-        {
-            //Work out type
-            NSArray * workoutTypes=[NSArray arrayWithObjects:@"Running",@"High Intensity Intervals",@"Core Strength", nil];
-            title=[workoutTypes objectAtIndex:row];
-            
-        }
-            break;
+        //Work out type
+        NSArray * workoutTypes=[NSArray arrayWithObjects:@"Running",@"High Intensity Intervals",@"Core Strength", nil];
+        title=[workoutTypes objectAtIndex:row];
+    }
+    else 
+    {
+        title=@"";
     }
     return title;
 }
 
 // tell the picker the width of each row for a given component
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    int sectionWidth = 100;
+/*- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    int sectionWidth = 140;
     
     return sectionWidth;
-}
+}*/
 @end
