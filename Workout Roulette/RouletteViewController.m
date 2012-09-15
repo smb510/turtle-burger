@@ -12,6 +12,7 @@
 #import "WRWorkoutViewController.h"
 #import "WRWorkout.h"
 #import "WRExercise.h"
+#import "MBJSONRequest.h"
 
 @interface RouletteViewController ()<UIPickerViewDelegate>
 @property UIPickerView* timePickerView;
@@ -77,23 +78,26 @@
 -(IBAction) createWorkout:(UIButton *) sender
 {
     
+    NSString* timeParam =  [self pickerView:timePickerView titleForRow:[timePickerView selectedRowInComponent:0] forComponent:0];
+    NSString* typeParam = [self pickerView:workoutPickerView titleForRow:[workoutPickerView selectedRowInComponent:0] forComponent:0];
     
     
     
-    WRWorkoutViewController* workout = [[WRWorkoutViewController alloc] initWithCMStore:nil];
-    [self presentModalViewController:workout animated:YES];
-    /*MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Making Workout....";
+    
+   // WRWorkoutViewController* workout = [[WRWorkoutViewController alloc] initWithCMStore:nil];
+    //[self presentModalViewController:workout animated:YES];
+    //MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //hud.labelText = @"Making Workout....";
     
     CMStore* store = [CMStore defaultStore];
     [store allObjectsOfClass:[WRExercise class] additionalOptions:nil callback:^(CMObjectFetchResponse* response){
-        [hud hide:YES];
-        WRWorkoutViewController* workout = [[WRWorkoutViewController alloc] initWithCMStore:response.objects];
-        [self presentModalViewController:workout animated:YES];
+        //[hud hide:YES];
+        //WRWorkoutViewController* workout = [[WRWorkoutViewController alloc] initWithCMStore:response.objects];
+        //[self presentModalViewController:workout animated:YES];
         
         NSLog(@"%@", response);
         
-    }];*/
+    }];
 }
 
 #pragma mark - UIPickerViewDelegate
