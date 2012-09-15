@@ -40,7 +40,7 @@
     musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     UIView* musicWidget = [[UIView alloc] initWithFrame:CGRectMake(0, 160, 320, 140)];
     MPMediaItem* nowPlaying = [musicPlayer nowPlayingItem];
-    if (nowPlaying == nil)
+    if (/*nowPlaying == nil*/ false)
     {
         UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [button setTitle:@"Select Playlist" forState:UIControlStateNormal];
@@ -51,13 +51,17 @@
     }
     else
     {
-        UIButton* back = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        UIButton* play = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        UIButton* forward = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        UIButton* back = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton* play = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIButton* forward = [UIButton buttonWithType:UIButtonTypeCustom];
     
+        
+        
         back.frame = CGRectMake(0, 0, 80, 32);
-        play.frame = CGRectMake(0, 100, 80, 32);
-        forward.frame = CGRectMake(0, 200, 80, 32);
+        play.frame = CGRectMake(100, 0, 80, 32);
+        forward.frame = CGRectMake(200, 0, 80, 32);
+        back.backgroundColor = [UIColor blueColor];
+        
         [musicWidget addSubview:back];
         [musicWidget addSubview:play];
         [musicWidget addSubview:forward];
