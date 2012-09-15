@@ -29,6 +29,7 @@ function saveInfo(){
 	var exercise = new WRExercise();
 	exercise.setType(data.type);
 	exercise.setDescription(data.desc);
+	exercise.setDuration($("#duration").val());
 	exercise.__class__ = "WRExercise";
 	
 	ws.set(null, exercise).on('success', function(){
@@ -84,6 +85,10 @@ function saveInfo(){
     <div class="input-box">
         <label>Description</label>
         <textarea id="desc"></textarea>
+    </div>
+	<div class="input-box">
+        <label>Duration</label>
+        <textarea id="duration"></textarea>
     </div>
 	<br>
 	<br>

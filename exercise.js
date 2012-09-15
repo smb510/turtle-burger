@@ -23,7 +23,7 @@ WRWorkout.prototype = {
 	setExercises : function(exercises)
 	{
 		this.exercises = exercises;
-	}
+	},
 	
 	addExercise : function(exercise)
 	{
