@@ -7,33 +7,27 @@
 //
 
 #import "WRWorkoutViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface WRWorkoutViewController ()
 
 @property (nonatomic, strong) UILabel* exerciseTitle;
 @property (nonatomic, strong) UILabel* timer;
 @property (nonatomic, strong) UIButton* done;
+@property (nonatomic, strong) MPMusicPlayerController* musicPlayer;
 
 @end
 
 @implementation WRWorkoutViewController
 
-@synthesize exerciseTitle, timer, done;
+@synthesize exerciseTitle, timer, done, musicPlayer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        done = [UIButton buttonWithType:UIButtonTypeCustom];
-        done.frame = CGRectMake(60, 0, 200, 32);
-        done.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"green paper"]];
-        UILabel* title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 32)];
-        [title setText:@"Done"];
-        title.textColor = [UIColor whiteColor];
-        [done addSubview:title];
-        timer = [[UILabel alloc] init];
-        exerciseTitle = [[UILabel alloc] init];
+        
         
         
     }
@@ -43,8 +37,52 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view addSubview:done];
+    musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+    UIView* musicWidget = [[UIView alloc] initWithFrame:CGRectMake(0, 160, 320, 140)];
+    MPMediaItem* nowPlaying = [musicPlayer nowPlayingItem];
+    if (nowPlaying == nil)
+    {
+        UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [button setTitle:@"Select Playlist" forState:UIControlStateNormal];
+        [button setFrame:CGRectMake(0, 0, 320, 48)];
+        [button addTarget:self action:@selector(selectPlaylist:) forControlEvents:UIControlEventTouchUpInside];
+        [musicWidget addSubview:button];
+        
+    }
+    else
+    {
+        UIButton* back = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        UIButton* play = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        UIButton* forward = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
+        back.frame = CGRectMake(0, 0, 80, 32);
+        play.frame = CGRectMake(0, 100, 80, 32);
+        forward.frame = CGRectMake(0, 200, 80, 32);
+        [musicWidget addSubview:back];
+        [musicWidget addSubview:play];
+        [musicWidget addSubview:forward];
+    }
+    
+    
+    self.view = [[UIView alloc] init];
+    self.view.frame = CGRectMake(0, 0, 320, 480);
+    done = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    done.frame = CGRectMake(60, 340, 200, 50);
+    [done setTitle:@"Done" forState:UIControlStateNormal];
+    timer = [[UILabel alloc] init];
+    timer.text = @"00:00";
+    [timer setFont:[UIFont systemFontOfSize:64.0f]];
+    timer.frame = CGRectMake(0, 0, 320, 100);
+    timer.textAlignment = UITextAlignmentCenter;
+    exerciseTitle = [[UILabel alloc] init];
+    exerciseTitle.text = @"30 Situps";
+    exerciseTitle.textAlignment = UITextAlignmentCenter;
+    exerciseTitle.frame = CGRectMake(0, 100, 320, 60);
+    [self.view addSubview:musicWidget];
+    [self.view addSubview:exerciseTitle];
+    [self.view addSubview:done];
+    [self.view addSubview:timer];
+    [self.view setNeedsDisplay];
     
 	// Do any additional setup after loading the view.
 }
@@ -58,6 +96,15 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(IBAction)selectPlaylist:(id)sender
+{
+    MPMediaPickerController* picker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
+    picker.delegate = self;
+    [self presentModalViewController:picker animated:YES];
+    
+    
 }
 
 @end

@@ -8,7 +8,8 @@
 
 #import <CloudMine/CloudMine.h>
 #import "WRAppDelegate.h"
-#include "RouletteViewController.h"
+#import "RouletteViewController.h"
+#import "WRWorkoutViewController.h"
 
 @implementation WRAppDelegate
 
@@ -24,7 +25,7 @@
     creds.appSecret = CM_API_KEY;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.rootViewController = [[RouletteViewController alloc] init];
+    self.window.rootViewController = [[WRWorkoutViewController alloc] init];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

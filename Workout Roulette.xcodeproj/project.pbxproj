@@ -10,6 +10,9 @@
 		8F3EED4716041C5A0071A566 /* RouletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3EED4616041C5A0071A566 /* RouletteViewController.m */; };
 		C3223C7F16041EA6006EBC60 /* WRWorkout.m in Sources */ = {isa = PBXBuildFile; fileRef = C3223C7E16041EA6006EBC60 /* WRWorkout.m */; };
 		C3223C83160420AE006EBC60 /* WRExercise.m in Sources */ = {isa = PBXBuildFile; fileRef = C3223C82160420AE006EBC60 /* WRExercise.m */; };
+		C3223C8B16042F54006EBC60 /* WRWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3223C8A16042F54006EBC60 /* WRWorkoutViewController.m */; };
+		C3223C8E1604315B006EBC60 /* green paper.png in Resources */ = {isa = PBXBuildFile; fileRef = C3223C8D1604315B006EBC60 /* green paper.png */; };
+		C3223C9116043641006EBC60 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3223C9016043641006EBC60 /* MediaPlayer.framework */; };
 		C3F1692316040E6A00C0CE12 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692216040E6A00C0CE12 /* UIKit.framework */; };
 		C3F1692516040E6A00C0CE12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692416040E6A00C0CE12 /* Foundation.framework */; };
 		C3F1692716040E6A00C0CE12 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692616040E6A00C0CE12 /* CoreGraphics.framework */; };
@@ -26,13 +29,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-
 		8F3EED4516041C5A0071A566 /* RouletteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouletteViewController.h; sourceTree = "<group>"; };
 		8F3EED4616041C5A0071A566 /* RouletteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouletteViewController.m; sourceTree = "<group>"; };
 		C3223C7D16041EA6006EBC60 /* WRWorkout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WRWorkout.h; path = "Workout Roulette/WRWorkout.h"; sourceTree = "<group>"; };
 		C3223C7E16041EA6006EBC60 /* WRWorkout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WRWorkout.m; path = "Workout Roulette/WRWorkout.m"; sourceTree = "<group>"; };
 		C3223C81160420AE006EBC60 /* WRExercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRExercise.h; sourceTree = "<group>"; };
 		C3223C82160420AE006EBC60 /* WRExercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRExercise.m; sourceTree = "<group>"; };
+		C3223C8916042F54006EBC60 /* WRWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRWorkoutViewController.h; sourceTree = "<group>"; };
+		C3223C8A16042F54006EBC60 /* WRWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRWorkoutViewController.m; sourceTree = "<group>"; };
+		C3223C8D1604315B006EBC60 /* green paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green paper.png"; sourceTree = "<group>"; };
+		C3223C9016043641006EBC60 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		C3F1691E16040E6A00C0CE12 /* Workout Roulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Workout Roulette.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F1692216040E6A00C0CE12 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3F1692416040E6A00C0CE12 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -57,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3223C9116043641006EBC60 /* MediaPlayer.framework in Frameworks */,
 				C3F169471604146300C0CE12 /* libz.dylib in Frameworks */,
 				C3F1692316040E6A00C0CE12 /* UIKit.framework in Frameworks */,
 				C3F169451604144C00C0CE12 /* MobileCoreServices.framework in Frameworks */,
@@ -83,9 +90,18 @@
 			name = "Model Data";
 			sourceTree = "<group>";
 		};
+		C3223C8F16043160006EBC60 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C3223C8D1604315B006EBC60 /* green paper.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		C3F1691316040E6A00C0CE12 = {
 			isa = PBXGroup;
 			children = (
+				C3223C8F16043160006EBC60 /* Resources */,
 				C3223C84160420B4006EBC60 /* Model Data */,
 				C3F1692A16040E6A00C0CE12 /* Workout Roulette */,
 				C3F1692116040E6A00C0CE12 /* Frameworks */,
@@ -104,6 +120,7 @@
 		C3F1692116040E6A00C0CE12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3223C9016043641006EBC60 /* MediaPlayer.framework */,
 				C3F169461604146300C0CE12 /* libz.dylib */,
 				C3F169441604144C00C0CE12 /* MobileCoreServices.framework */,
 				C3F169421604144400C0CE12 /* SystemConfiguration.framework */,
@@ -126,6 +143,8 @@
 				C3F1692B16040E6A00C0CE12 /* Supporting Files */,
 				8F3EED4516041C5A0071A566 /* RouletteViewController.h */,
 				8F3EED4616041C5A0071A566 /* RouletteViewController.m */,
+				C3223C8916042F54006EBC60 /* WRWorkoutViewController.h */,
+				C3223C8A16042F54006EBC60 /* WRWorkoutViewController.m */,
 			);
 			path = "Workout Roulette";
 			sourceTree = "<group>";
@@ -194,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3F1692F16040E6A00C0CE12 /* InfoPlist.strings in Resources */,
+				C3223C8E1604315B006EBC60 /* green paper.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,12 +227,10 @@
 				C3F1693116040E6A00C0CE12 /* main.m in Sources */,
 				C3F1693516040E6A00C0CE12 /* WRAppDelegate.m in Sources */,
 				C3F1693816040E6A00C0CE12 /* Workout_Roulette.xcdatamodeld in Sources */,
-
 				8F3EED4716041C5A0071A566 /* RouletteViewController.m in Sources */,
-
 				C3223C7F16041EA6006EBC60 /* WRWorkout.m in Sources */,
 				C3223C83160420AE006EBC60 /* WRExercise.m in Sources */,
-
+				C3223C8B16042F54006EBC60 /* WRWorkoutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

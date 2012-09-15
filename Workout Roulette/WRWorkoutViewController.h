@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
-@interface WRWorkoutViewController : UIViewController
+@interface WRWorkoutViewController : UIViewController <MPMediaPickerControllerDelegate>
+
+
+
+-(IBAction)selectPlaylist:(id)sender;
+
+-(void) mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection;
+-(void) mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker;
 
 @end
