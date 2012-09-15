@@ -8,6 +8,7 @@
 
 #import <CloudMine/CloudMine.h>
 #import "WRAppDelegate.h"
+#include "RouletteViewController.h"
 
 @implementation WRAppDelegate
 

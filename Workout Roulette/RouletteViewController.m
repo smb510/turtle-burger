@@ -73,7 +73,7 @@
             //Time options
             int time=10;
             time+=row*5;
-            title=[NSString stringWithFormat:@"%@ minutes",time];
+            title=[NSString stringWithFormat:@"%d minutes",time];
         }
             break;
         case 1:
