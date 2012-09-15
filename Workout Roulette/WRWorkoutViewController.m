@@ -15,12 +15,13 @@
 @property (nonatomic, strong) UILabel* timer;
 @property (nonatomic, strong) UIButton* done;
 @property (nonatomic, strong) MPMusicPlayerController* musicPlayer;
+@property (nonatomic, strong) MPMediaPickerController* mediaPicker;
 
 @end
 
 @implementation WRWorkoutViewController
 
-@synthesize exerciseTitle, timer, done, musicPlayer;
+@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -84,7 +85,28 @@
     [self.view addSubview:timer];
     [self.view setNeedsDisplay];
     
-	// Do any additional setup after loading the view.
+	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [ notificationCenter
+     addObserver: self
+     selector:@selector(handle_NowPlayingItemChanged:)
+     name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification
+     object: musicPlayer];
+    [notificationCenter
+     addObserver: self
+     selector:@selector(handle_PlaybackStateChanged:)
+     name:MPMusicPlayerControllerPlaybackStateDidChangeNotification
+     object:musicPlayer];
+    [musicPlayer beginGeneratingPlaybackNotifications];
+    
+    MPMusicPlayerController* ipodMusicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+    
+    [ipodMusicPlayer setShuffleMode: MPMusicShuffleModeOff];
+    [ipodMusicPlayer setRepeatMode: MPMusicRepeatModeAll];
+    if ([ipodMusicPlayer nowPlayingItem]) {
+        //can update UI (artwork, song name, volume, etc.) to reflect ipod state
+    }
+    
+    // Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
@@ -100,11 +122,22 @@
 
 -(IBAction)selectPlaylist:(id)sender
 {
-    MPMediaPickerController* picker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
-    picker.delegate = self;
-    [self presentModalViewController:picker animated:YES];
-    
-    
+    mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
+    mediaPicker.delegate = self;
+    [self presentModalViewController:mediaPicker animated:YES];
+}
+
+-(void) updateMediaQueueWithMediaCollection:(MPMediaItemCollection *)mediaItemCollection{
+   //SCOTTIE HELLLPPP
+    }
+
+-(void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection{
+    [self dismissModalViewControllerAnimated:YES];
+    [self updateMediaQueueWithMediaCollection: mediaItemCollection]
+}
+
+-(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

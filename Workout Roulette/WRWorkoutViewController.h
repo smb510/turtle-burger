@@ -15,6 +15,7 @@
 
 -(IBAction)selectPlaylist:(id)sender;
 
+-(void) updateMediaQueueWithMediaCollection: (MPMediaItemCollection *) mediaItemCollection;
 -(void) mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection;
 -(void) mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker;
 
