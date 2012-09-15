@@ -15,12 +15,24 @@
 @property (nonatomic, strong) UILabel* timer;
 @property (nonatomic, strong) UIButton* done;
 @property (nonatomic, strong) MPMusicPlayerController* musicPlayer;
+@property (nonatomic, strong) NSArray* workout;
 
 @end
 
 @implementation WRWorkoutViewController
 
-@synthesize exerciseTitle, timer, done, musicPlayer;
+@synthesize exerciseTitle, timer, done, musicPlayer, workout;
+
+
+-(id) initWithCMStore:(NSArray *)workouts
+{
+   self = [super init];
+    if(self)
+    {
+    self.workout = workout;
+    }
+    return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,7 +52,7 @@
     musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     UIView* musicWidget = [[UIView alloc] initWithFrame:CGRectMake(0, 160, 320, 140)];
     MPMediaItem* nowPlaying = [musicPlayer nowPlayingItem];
-    if (/*nowPlaying == nil*/ false)
+    if (nowPlaying == nil)
     {
         UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [button setTitle:@"Select Playlist" forState:UIControlStateNormal];

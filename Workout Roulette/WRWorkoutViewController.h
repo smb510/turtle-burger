@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <CloudMine/CloudMine.h>
 
 @interface WRWorkoutViewController : UIViewController <MPMediaPickerControllerDelegate>
 
-
-
+-(id) initWithCMStore:(NSArray*) workouts;
 -(IBAction)selectPlaylist:(id)sender;
 
 -(void) mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection;

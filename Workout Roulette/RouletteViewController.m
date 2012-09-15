@@ -7,6 +7,9 @@
 //
 
 #import "RouletteViewController.h"
+#import "MBProgressHUD.h"
+#import <CloudMine/CloudMine.h>
+#import "WRWorkoutViewController.h"
 
 @interface RouletteViewController ()<UIPickerViewDelegate>
 @property UIPickerView* timePickerView;
@@ -117,6 +120,25 @@
         title=@"";
     }
     return title;
+}
+
+
+-(IBAction)makeWorkout:(id)sender
+{
+    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Making Workout....";
+    
+    CMStore* store = [CMStore defaultStore];
+    [store allObjectsWithOptions:nil callback:^(CMObjectFetchResponse* response){
+        [hud hide:YES];
+        WRWorkoutViewController* workout = [[WRWorkoutViewController alloc] initWithCMStore:response.objects];
+        [self presentModalViewController:workout animated:YES];
+        
+    
+    }];
+    
+    
+    
 }
 
 // tell the picker the width of each row for a given component
