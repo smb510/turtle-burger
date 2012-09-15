@@ -1,0 +1,290 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C3F1692316040E6A00C0CE12 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692216040E6A00C0CE12 /* UIKit.framework */; };
+		C3F1692516040E6A00C0CE12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692416040E6A00C0CE12 /* Foundation.framework */; };
+		C3F1692716040E6A00C0CE12 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692616040E6A00C0CE12 /* CoreGraphics.framework */; };
+		C3F1692916040E6A00C0CE12 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692816040E6A00C0CE12 /* CoreData.framework */; };
+		C3F1692F16040E6A00C0CE12 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3F1692D16040E6A00C0CE12 /* InfoPlist.strings */; };
+		C3F1693116040E6A00C0CE12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F1693016040E6A00C0CE12 /* main.m */; };
+		C3F1693516040E6A00C0CE12 /* WRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F1693416040E6A00C0CE12 /* WRAppDelegate.m */; };
+		C3F1693816040E6A00C0CE12 /* Workout_Roulette.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3F1693616040E6A00C0CE12 /* Workout_Roulette.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C3F1691E16040E6A00C0CE12 /* Workout Roulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Workout Roulette.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3F1692216040E6A00C0CE12 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C3F1692416040E6A00C0CE12 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C3F1692616040E6A00C0CE12 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C3F1692816040E6A00C0CE12 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C3F1692C16040E6A00C0CE12 /* Workout Roulette-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Workout Roulette-Info.plist"; sourceTree = "<group>"; };
+		C3F1692E16040E6A00C0CE12 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C3F1693016040E6A00C0CE12 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C3F1693216040E6A00C0CE12 /* Workout Roulette-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Workout Roulette-Prefix.pch"; sourceTree = "<group>"; };
+		C3F1693316040E6A00C0CE12 /* WRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRAppDelegate.h; sourceTree = "<group>"; };
+		C3F1693416040E6A00C0CE12 /* WRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRAppDelegate.m; sourceTree = "<group>"; };
+		C3F1693716040E6A00C0CE12 /* Workout_Roulette.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Workout_Roulette.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C3F1691B16040E6A00C0CE12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3F1692316040E6A00C0CE12 /* UIKit.framework in Frameworks */,
+				C3F1692516040E6A00C0CE12 /* Foundation.framework in Frameworks */,
+				C3F1692716040E6A00C0CE12 /* CoreGraphics.framework in Frameworks */,
+				C3F1692916040E6A00C0CE12 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C3F1691316040E6A00C0CE12 = {
+			isa = PBXGroup;
+			children = (
+				C3F1692A16040E6A00C0CE12 /* Workout Roulette */,
+				C3F1692116040E6A00C0CE12 /* Frameworks */,
+				C3F1691F16040E6A00C0CE12 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C3F1691F16040E6A00C0CE12 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C3F1691E16040E6A00C0CE12 /* Workout Roulette.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C3F1692116040E6A00C0CE12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3F1692216040E6A00C0CE12 /* UIKit.framework */,
+				C3F1692416040E6A00C0CE12 /* Foundation.framework */,
+				C3F1692616040E6A00C0CE12 /* CoreGraphics.framework */,
+				C3F1692816040E6A00C0CE12 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C3F1692A16040E6A00C0CE12 /* Workout Roulette */ = {
+			isa = PBXGroup;
+			children = (
+				C3F1693316040E6A00C0CE12 /* WRAppDelegate.h */,
+				C3F1693416040E6A00C0CE12 /* WRAppDelegate.m */,
+				C3F1693616040E6A00C0CE12 /* Workout_Roulette.xcdatamodeld */,
+				C3F1692B16040E6A00C0CE12 /* Supporting Files */,
+			);
+			path = "Workout Roulette";
+			sourceTree = "<group>";
+		};
+		C3F1692B16040E6A00C0CE12 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C3F1692C16040E6A00C0CE12 /* Workout Roulette-Info.plist */,
+				C3F1692D16040E6A00C0CE12 /* InfoPlist.strings */,
+				C3F1693016040E6A00C0CE12 /* main.m */,
+				C3F1693216040E6A00C0CE12 /* Workout Roulette-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C3F1691D16040E6A00C0CE12 /* Workout Roulette */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3F1693B16040E6A00C0CE12 /* Build configuration list for PBXNativeTarget "Workout Roulette" */;
+			buildPhases = (
+				C3F1691A16040E6A00C0CE12 /* Sources */,
+				C3F1691B16040E6A00C0CE12 /* Frameworks */,
+				C3F1691C16040E6A00C0CE12 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Workout Roulette";
+			productName = "Workout Roulette";
+			productReference = C3F1691E16040E6A00C0CE12 /* Workout Roulette.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C3F1691516040E6A00C0CE12 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = WR;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Bacon Wrapped Turtle Burgers";
+			};
+			buildConfigurationList = C3F1691816040E6A00C0CE12 /* Build configuration list for PBXProject "Workout Roulette" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C3F1691316040E6A00C0CE12;
+			productRefGroup = C3F1691F16040E6A00C0CE12 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C3F1691D16040E6A00C0CE12 /* Workout Roulette */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C3F1691C16040E6A00C0CE12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3F1692F16040E6A00C0CE12 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C3F1691A16040E6A00C0CE12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3F1693116040E6A00C0CE12 /* main.m in Sources */,
+				C3F1693516040E6A00C0CE12 /* WRAppDelegate.m in Sources */,
+				C3F1693816040E6A00C0CE12 /* Workout_Roulette.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C3F1692D16040E6A00C0CE12 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3F1692E16040E6A00C0CE12 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C3F1693916040E6A00C0CE12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C3F1693A16040E6A00C0CE12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C3F1693C16040E6A00C0CE12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Workout Roulette/Workout Roulette-Prefix.pch";
+				INFOPLIST_FILE = "Workout Roulette/Workout Roulette-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C3F1693D16040E6A00C0CE12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Workout Roulette/Workout Roulette-Prefix.pch";
+				INFOPLIST_FILE = "Workout Roulette/Workout Roulette-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C3F1691816040E6A00C0CE12 /* Build configuration list for PBXProject "Workout Roulette" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3F1693916040E6A00C0CE12 /* Debug */,
+				C3F1693A16040E6A00C0CE12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3F1693B16040E6A00C0CE12 /* Build configuration list for PBXNativeTarget "Workout Roulette" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3F1693C16040E6A00C0CE12 /* Debug */,
+				C3F1693D16040E6A00C0CE12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C3F1693616040E6A00C0CE12 /* Workout_Roulette.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C3F1693716040E6A00C0CE12 /* Workout_Roulette.xcdatamodel */,
+			);
+			currentVersion = C3F1693716040E6A00C0CE12 /* Workout_Roulette.xcdatamodel */;
+			path = Workout_Roulette.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C3F1691516040E6A00C0CE12 /* Project object */;
+}
