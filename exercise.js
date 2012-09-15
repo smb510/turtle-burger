@@ -1,7 +1,14 @@
 function WRWorkout(obj)
-{
+{if(obj != undefined)
+	{
 	this.duration = obj.duration;
 	this.exercises = obj.exercises;
+}
+else
+{
+	this.duration = 0;
+	this.exercises = [];
+}
 }
 
 
@@ -16,6 +23,12 @@ WRWorkout.prototype = {
 	setExercises : function(exercises)
 	{
 		this.exercises = exercises;
+	}
+	
+	addExercise : function(exercise)
+	{
+		this.exercises.push(exercise);
+		
 	}
 }
 
@@ -51,8 +64,6 @@ WRExercise.prototype = {
 	setDescription : function(description)
 	{
 		this.description = description;
-	}
-	
-	
-	
+	}	
 }
+ 
