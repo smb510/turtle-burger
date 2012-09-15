@@ -29,7 +29,7 @@
    self = [super init];
     if(self)
     {
-    self.workout = workout;
+    self.workout = workouts;
     }
     return self;
 }
@@ -91,7 +91,7 @@
     timer.frame = CGRectMake(0, 0, 320, 100);
     timer.textAlignment = UITextAlignmentCenter;
     exerciseTitle = [[UILabel alloc] init];
-    exerciseTitle.text = @"30 Situps";
+    exerciseTitle.text = [[self.workout objectAtIndex:0] description];
     exerciseTitle.textAlignment = UITextAlignmentCenter;
     exerciseTitle.frame = CGRectMake(0, 100, 320, 60);
     [self.view addSubview:musicWidget];

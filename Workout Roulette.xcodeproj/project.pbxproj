@@ -314,7 +314,7 @@
 				GCC_PREFIX_HEADER = "Workout Roulette/Workout Roulette-Prefix.pch";
 				INFOPLIST_FILE = "Workout Roulette/Workout Roulette-Info.plist";
 				OTHER_LDFLAGS = (
-					"-all-load",
+					"-all_load",
 					"-Objc",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -333,7 +333,7 @@
 				GCC_PREFIX_HEADER = "Workout Roulette/Workout Roulette-Prefix.pch";
 				INFOPLIST_FILE = "Workout Roulette/Workout Roulette-Info.plist";
 				OTHER_LDFLAGS = (
-					"-all-load",
+					"-all_load",
 					"-Objc",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";

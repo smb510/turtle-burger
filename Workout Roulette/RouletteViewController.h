@@ -11,6 +11,6 @@
 @interface RouletteViewController : UIViewController
 
 
--(IBAction)makeWorkout:(id)sender;
+-(IBAction)createWorkout:(id)sender;
 
 @end
