@@ -127,17 +127,56 @@
     [self presentModalViewController:mediaPicker animated:YES];
 }
 
--(void) updateMediaQueueWithMediaCollection:(MPMediaItemCollection *)mediaItemCollection{
-   //SCOTTIE HELLLPPP
+-(void) updateMediaQueueWithMediaCollection:(MPMediaItemCollection *)mediaItemCollection {
+    [musicPlayer setQueueWithItemCollection:mediaItemCollection];
     }
 
 -(void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection{
     [self dismissModalViewControllerAnimated:YES];
-    [self updateMediaQueueWithMediaCollection: mediaItemCollection]
+    [self updateMediaQueueWithMediaCollection: mediaItemCollection];
 }
 
 -(void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker{
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
+}
+
+
+- (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
+    
+    if (receivedEvent.type == UIEventTypeRemoteControl) {
+        
+        switch (receivedEvent.subtype) {
+                
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+                [musicPlayer togglePlayPause: nil];
+                break;
+                
+            case UIEventSubtypeRemoteControlPreviousTrack:
+                [musicPlayer previousTrack: nil];
+                break;
+                
+            case UIEventSubtypeRemoteControlNextTrack:
+                [self nextTrack: nil];
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
+
+- (void) togglePlayPause {
+    if (musicPlayer.playbackState == MPMusicPlaybackStatePlaying) {
+        [musicPlayer pause];
+    } else {
+        [musicPlayer play];
+    }
 }
 
 @end
