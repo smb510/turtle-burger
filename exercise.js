@@ -23,9 +23,16 @@ WRWorkout.prototype = {
 
 function WRExercise(obj)
 {
+	if(obj === undefined)
+	{
+		
+	}
+	else
+	{
 	this.type = obj.type;
 	this.duration = obj.duration;
 	this.description = obj.description;
+	}	
 }
 
 WRExercise.prototype = {
