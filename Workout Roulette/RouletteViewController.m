@@ -76,6 +76,10 @@
 }
 -(IBAction) createWorkout:(UIButton *) sender
 {
+    
+    
+    
+    
     WRWorkoutViewController* workout = [[WRWorkoutViewController alloc] initWithCMStore:nil];
     [self presentModalViewController:workout animated:YES];
     /*MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
