@@ -9,6 +9,7 @@
 #import "WRExercise.h"
 
 @implementation WRExercise
+@synthesize duration = _duration, type = _type, description = _description, url = _url;
 
 
 

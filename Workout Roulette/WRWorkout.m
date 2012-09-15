@@ -10,6 +10,8 @@
 
 @implementation WRWorkout
 
+@synthesize duration = _duration, exercises = _exercises;
+
 -(void) encodeWithCoder:(NSCoder *)aCoder
 {
     [super initWithCoder:aCoder];
