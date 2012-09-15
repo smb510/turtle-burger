@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F3EED4716041C5A0071A566 /* RouletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3EED4616041C5A0071A566 /* RouletteViewController.m */; };
 		C3F1692316040E6A00C0CE12 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692216040E6A00C0CE12 /* UIKit.framework */; };
 		C3F1692516040E6A00C0CE12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692416040E6A00C0CE12 /* Foundation.framework */; };
 		C3F1692716040E6A00C0CE12 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692616040E6A00C0CE12 /* CoreGraphics.framework */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8F3EED4516041C5A0071A566 /* RouletteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouletteViewController.h; sourceTree = "<group>"; };
+		8F3EED4616041C5A0071A566 /* RouletteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouletteViewController.m; sourceTree = "<group>"; };
 		C3F1691E16040E6A00C0CE12 /* Workout Roulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Workout Roulette.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F1692216040E6A00C0CE12 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3F1692416040E6A00C0CE12 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -102,6 +105,8 @@
 				C3F1693416040E6A00C0CE12 /* WRAppDelegate.m */,
 				C3F1693616040E6A00C0CE12 /* Workout_Roulette.xcdatamodeld */,
 				C3F1692B16040E6A00C0CE12 /* Supporting Files */,
+				8F3EED4516041C5A0071A566 /* RouletteViewController.h */,
+				8F3EED4616041C5A0071A566 /* RouletteViewController.m */,
 			);
 			path = "Workout Roulette";
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 				C3F1693116040E6A00C0CE12 /* main.m in Sources */,
 				C3F1693516040E6A00C0CE12 /* WRAppDelegate.m in Sources */,
 				C3F1693816040E6A00C0CE12 /* Workout_Roulette.xcdatamodeld in Sources */,
+				8F3EED4716041C5A0071A566 /* RouletteViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +312,7 @@
 				C3F1693D16040E6A00C0CE12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
