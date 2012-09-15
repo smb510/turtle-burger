@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		8F3EED4716041C5A0071A566 /* RouletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3EED4616041C5A0071A566 /* RouletteViewController.m */; };
+=======
+		C3223C7F16041EA6006EBC60 /* WRWorkout.m in Sources */ = {isa = PBXBuildFile; fileRef = C3223C7E16041EA6006EBC60 /* WRWorkout.m */; };
+		C3223C83160420AE006EBC60 /* WRExercise.m in Sources */ = {isa = PBXBuildFile; fileRef = C3223C82160420AE006EBC60 /* WRExercise.m */; };
+>>>>>>> 3dd73c9b80be70fe4b4cd7ae225e5a770b0e1dc1
 		C3F1692316040E6A00C0CE12 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692216040E6A00C0CE12 /* UIKit.framework */; };
 		C3F1692516040E6A00C0CE12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692416040E6A00C0CE12 /* Foundation.framework */; };
 		C3F1692716040E6A00C0CE12 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692616040E6A00C0CE12 /* CoreGraphics.framework */; };
@@ -24,8 +29,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		8F3EED4516041C5A0071A566 /* RouletteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouletteViewController.h; sourceTree = "<group>"; };
 		8F3EED4616041C5A0071A566 /* RouletteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouletteViewController.m; sourceTree = "<group>"; };
+=======
+		C3223C7D16041EA6006EBC60 /* WRWorkout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WRWorkout.h; path = "Workout Roulette/WRWorkout.h"; sourceTree = "<group>"; };
+		C3223C7E16041EA6006EBC60 /* WRWorkout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WRWorkout.m; path = "Workout Roulette/WRWorkout.m"; sourceTree = "<group>"; };
+		C3223C81160420AE006EBC60 /* WRExercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRExercise.h; sourceTree = "<group>"; };
+		C3223C82160420AE006EBC60 /* WRExercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRExercise.m; sourceTree = "<group>"; };
+>>>>>>> 3dd73c9b80be70fe4b4cd7ae225e5a770b0e1dc1
 		C3F1691E16040E6A00C0CE12 /* Workout Roulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Workout Roulette.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F1692216040E6A00C0CE12 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C3F1692416040E6A00C0CE12 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -65,9 +77,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C3223C84160420B4006EBC60 /* Model Data */ = {
+			isa = PBXGroup;
+			children = (
+				C3223C81160420AE006EBC60 /* WRExercise.h */,
+				C3223C82160420AE006EBC60 /* WRExercise.m */,
+				C3223C7D16041EA6006EBC60 /* WRWorkout.h */,
+				C3223C7E16041EA6006EBC60 /* WRWorkout.m */,
+			);
+			name = "Model Data";
+			sourceTree = "<group>";
+		};
 		C3F1691316040E6A00C0CE12 = {
 			isa = PBXGroup;
 			children = (
+				C3223C84160420B4006EBC60 /* Model Data */,
 				C3F1692A16040E6A00C0CE12 /* Workout Roulette */,
 				C3F1692116040E6A00C0CE12 /* Frameworks */,
 				C3F1691F16040E6A00C0CE12 /* Products */,
@@ -188,7 +212,12 @@
 				C3F1693116040E6A00C0CE12 /* main.m in Sources */,
 				C3F1693516040E6A00C0CE12 /* WRAppDelegate.m in Sources */,
 				C3F1693816040E6A00C0CE12 /* Workout_Roulette.xcdatamodeld in Sources */,
+<<<<<<< HEAD
 				8F3EED4716041C5A0071A566 /* RouletteViewController.m in Sources */,
+=======
+				C3223C7F16041EA6006EBC60 /* WRWorkout.m in Sources */,
+				C3223C83160420AE006EBC60 /* WRExercise.m in Sources */,
+>>>>>>> 3dd73c9b80be70fe4b4cd7ae225e5a770b0e1dc1
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
