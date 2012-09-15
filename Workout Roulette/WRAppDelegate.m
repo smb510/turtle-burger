@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Bacon Wrapped Turtle Burgers. All rights reserved.
 //
 
+#import <CloudMine/CloudMine.h>
 #import "WRAppDelegate.h"
 
 @implementation WRAppDelegate
@@ -16,6 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    CMAPICredentials* creds = [CMAPICredentials sharedInstance];
+    creds.appIdentifier = CM_APP_ID;
+    creds.appSecret = CM_API_KEY;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

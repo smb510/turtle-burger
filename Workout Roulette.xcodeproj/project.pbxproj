@@ -15,6 +15,11 @@
 		C3F1693116040E6A00C0CE12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F1693016040E6A00C0CE12 /* main.m */; };
 		C3F1693516040E6A00C0CE12 /* WRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F1693416040E6A00C0CE12 /* WRAppDelegate.m */; };
 		C3F1693816040E6A00C0CE12 /* Workout_Roulette.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3F1693616040E6A00C0CE12 /* Workout_Roulette.xcdatamodeld */; };
+		C3F1693F1604140C00C0CE12 /* CloudMine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1693E1604140C00C0CE12 /* CloudMine.framework */; };
+		C3F169411604143B00C0CE12 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F169401604143B00C0CE12 /* CFNetwork.framework */; };
+		C3F169431604144400C0CE12 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F169421604144400C0CE12 /* SystemConfiguration.framework */; };
+		C3F169451604144C00C0CE12 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F169441604144C00C0CE12 /* MobileCoreServices.framework */; };
+		C3F169471604146300C0CE12 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F169461604146300C0CE12 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		C3F1693316040E6A00C0CE12 /* WRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WRAppDelegate.h; sourceTree = "<group>"; };
 		C3F1693416040E6A00C0CE12 /* WRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WRAppDelegate.m; sourceTree = "<group>"; };
 		C3F1693716040E6A00C0CE12 /* Workout_Roulette.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Workout_Roulette.xcdatamodel; sourceTree = "<group>"; };
+		C3F1693E1604140C00C0CE12 /* CloudMine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudMine.framework; path = "Workout Roulette/CloudMine.framework"; sourceTree = "<group>"; };
+		C3F169401604143B00C0CE12 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C3F169421604144400C0CE12 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C3F169441604144C00C0CE12 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		C3F169461604146300C0CE12 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,10 +47,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F169471604146300C0CE12 /* libz.dylib in Frameworks */,
 				C3F1692316040E6A00C0CE12 /* UIKit.framework in Frameworks */,
+				C3F169451604144C00C0CE12 /* MobileCoreServices.framework in Frameworks */,
+				C3F169431604144400C0CE12 /* SystemConfiguration.framework in Frameworks */,
+				C3F169411604143B00C0CE12 /* CFNetwork.framework in Frameworks */,
 				C3F1692516040E6A00C0CE12 /* Foundation.framework in Frameworks */,
 				C3F1692716040E6A00C0CE12 /* CoreGraphics.framework in Frameworks */,
 				C3F1692916040E6A00C0CE12 /* CoreData.framework in Frameworks */,
+				C3F1693F1604140C00C0CE12 /* CloudMine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +82,11 @@
 		C3F1692116040E6A00C0CE12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3F169461604146300C0CE12 /* libz.dylib */,
+				C3F169441604144C00C0CE12 /* MobileCoreServices.framework */,
+				C3F169421604144400C0CE12 /* SystemConfiguration.framework */,
+				C3F169401604143B00C0CE12 /* CFNetwork.framework */,
+				C3F1693E1604140C00C0CE12 /* CloudMine.framework */,
 				C3F1692216040E6A00C0CE12 /* UIKit.framework */,
 				C3F1692416040E6A00C0CE12 /* Foundation.framework */,
 				C3F1692616040E6A00C0CE12 /* CoreGraphics.framework */,
@@ -232,9 +252,17 @@
 		C3F1693C16040E6A00C0CE12 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Workout Roulette\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Workout Roulette/Workout Roulette-Prefix.pch";
 				INFOPLIST_FILE = "Workout Roulette/Workout Roulette-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all-load",
+					"-Objc",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -243,9 +271,17 @@
 		C3F1693D16040E6A00C0CE12 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Workout Roulette\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Workout Roulette/Workout Roulette-Prefix.pch";
 				INFOPLIST_FILE = "Workout Roulette/Workout Roulette-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all-load",
+					"-Objc",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

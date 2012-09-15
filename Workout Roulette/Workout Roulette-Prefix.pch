@@ -13,3 +13,6 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
 #endif
+
+#define CM_APP_ID @"c697178c50cb4372b6e26ebaf278887b"
+#define CM_API_KEY @"2c42264d08ea457f8431a40c27494e51"
