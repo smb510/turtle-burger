@@ -15,20 +15,13 @@
 @property (nonatomic, strong) UILabel* timer;
 @property (nonatomic, strong) UIButton* done;
 @property (nonatomic, strong) MPMusicPlayerController* musicPlayer;
-<<<<<<< HEAD
 @property (nonatomic, strong) MPMediaPickerController* mediaPicker;
-=======
 @property (nonatomic, strong) NSArray* workout;
->>>>>>> 11686594df640cc7ac1a5c2800bf7b897d9354ec
-
 @end
 
 @implementation WRWorkoutViewController
 
-<<<<<<< HEAD
-@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker;
-=======
-@synthesize exerciseTitle, timer, done, musicPlayer, workout;
+@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout;
 
 
 -(id) initWithCMStore:(NSArray *)workouts
@@ -40,16 +33,13 @@
     }
     return self;
 }
->>>>>>> 11686594df640cc7ac1a5c2800bf7b897d9354ec
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
-        
-        
+            
     }
     return self;
 }
@@ -177,15 +167,15 @@
         switch (receivedEvent.subtype) {
                 
             case UIEventSubtypeRemoteControlTogglePlayPause:
-                [musicPlayer togglePlayPause: nil];
+                [self togglePlayPause];
                 break;
                 
             case UIEventSubtypeRemoteControlPreviousTrack:
-                [musicPlayer previousTrack: nil];
+                [musicPlayer skipToPreviousItem];
                 break;
                 
             case UIEventSubtypeRemoteControlNextTrack:
-                [self nextTrack: nil];
+                [musicPlayer skipToNextItem];
                 break;
                 
             default:
@@ -201,5 +191,7 @@
         [musicPlayer play];
     }
 }
+
+
 
 @end
