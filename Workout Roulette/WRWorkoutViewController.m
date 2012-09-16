@@ -110,8 +110,8 @@
     [back addTarget:self action:@selector(skipPrevious) forControlEvents:UIControlEventTouchUpInside];
     
     play.frame = CGRectMake(80, 0, 78, 78);
-    if (nowPlaying != nil) {    
-    [play setBackgroundImage:[UIImage imageNamed:@"play2"] forState:UIControlStateNormal];
+    if (nowPlaying == nil) {
+    [play setBackgroundImage:[UIImage imageNamed:@"play3"] forState:UIControlStateNormal];
     }
     else
     {
@@ -121,7 +121,7 @@
     [play addTarget:self action:@selector(togglePlayPause) forControlEvents:UIControlEventTouchUpInside];
     forward.frame = CGRectMake(160, 0, 78, 78);
     //[forward setTitle:@"skip" forState:UIControlStateNormal];
-    [forward setBackgroundImage:[UIImage imageNamed:@"stepforward2"] forState:UIControlStateNormal];
+    [forward setBackgroundImage:[UIImage imageNamed:@"stepforward3"] forState:UIControlStateNormal];
     [forward addTarget:self action:@selector(skipNext) forControlEvents:UIControlEventTouchUpInside];
     
     [musicWidget addSubview:back];
@@ -177,7 +177,7 @@
     [self.view addSubview:done];
     [self.view addSubview:timer];
     [self.view setNeedsDisplay];
-    self.count = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    self.count = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 70, 30)];
     [self.count setBackgroundColor:[UIColor clearColor]];
     [self.count setTextColor:[UIColor whiteColor]];
     [count setText:[NSString stringWithFormat:@"%d of %d", self.workoutIndex.intValue + 1, self.workout.count]];
