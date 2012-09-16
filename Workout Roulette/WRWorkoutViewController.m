@@ -76,7 +76,7 @@
     self.navigationController.navigationBarHidden=NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateWorkouts:) name:UpdateWorkoutsNotification object:nil];
     musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-    UIView* musicWidget = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 320, 140)];
+    UIView* musicWidget = [[UIView alloc] initWithFrame:CGRectMake(0, 85, 320, 140)];
     MPMediaItem* nowPlaying = [musicPlayer nowPlayingItem];
     if (nowPlaying == nil)
     {
@@ -89,7 +89,7 @@
         self.view.backgroundColor=[UIColor colorWithPatternImage:artWorkImage];
     }
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setBackgroundImage:[UIImage imageNamed:@"playlist"] forState:UIControlStateNormal];
+    [button setBackgroundImage:[UIImage imageNamed:@"playlist2"] forState:UIControlStateNormal];
     //[button setTitle:@"Select Playlist" forState:UIControlStateNormal];
     [button setFrame:CGRectMake(240, 0, 78, 78)];
     [button addTarget:self action:@selector(selectPlaylist:) forControlEvents:UIControlEventTouchUpInside];
@@ -104,18 +104,24 @@
     
     
     back.frame = CGRectMake(0, 0, 78, 78);
-    [back setBackgroundImage:[UIImage imageNamed:@"stepback"] forState:UIControlStateNormal];
+    [back setBackgroundImage:[UIImage imageNamed:@"stepback2"] forState:UIControlStateNormal];
     [back setBackgroundColor:[UIColor clearColor]];
     //[back setTitle:@"back" forState:UIControlStateNormal];
     [back addTarget:self action:@selector(skipPrevious) forControlEvents:UIControlEventTouchUpInside];
     
     play.frame = CGRectMake(80, 0, 78, 78);
-    [play setBackgroundImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+    if (nowPlaying != nil) {    
+    [play setBackgroundImage:[UIImage imageNamed:@"play2"] forState:UIControlStateNormal];
+    }
+    else
+    {
+    [play setBackgroundImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];    
+    }
     //[play setTitle:@"play" forState:UIControlStateNormal];
     [play addTarget:self action:@selector(togglePlayPause) forControlEvents:UIControlEventTouchUpInside];
     forward.frame = CGRectMake(160, 0, 78, 78);
     //[forward setTitle:@"skip" forState:UIControlStateNormal];
-    [forward setBackgroundImage:[UIImage imageNamed:@"stepforward"] forState:UIControlStateNormal];
+    [forward setBackgroundImage:[UIImage imageNamed:@"stepforward2"] forState:UIControlStateNormal];
     [forward addTarget:self action:@selector(skipNext) forControlEvents:UIControlEventTouchUpInside];
     
     [musicWidget addSubview:back];
@@ -142,9 +148,9 @@
         timer.text =[NSString stringWithFormat:@"%d:00", [[(WRExercise*)[self.workout objectAtIndex:workoutIndex.intValue] duration] intValue]];
     }
     [timer setFont:[UIFont systemFontOfSize:64.0f]];
-    timer.frame = CGRectMake(0, 0, 320, 100);
+    timer.frame = CGRectMake(0, 0, 320, 75);
     timer.textAlignment = UITextAlignmentCenter;
-    UIView* titleContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 179, 320, 20)];
+    UIView* titleContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 164, 320, 20)];
 
     exerciseTitle = [[UILabel alloc] init];
 
@@ -159,7 +165,7 @@
     [exerciseTitle setTextColor:[UIColor whiteColor]];
     
     
-    exerciseDescription = [[UILabel alloc] initWithFrame:CGRectMake(0 , 199, 320, 150)];
+    exerciseDescription = [[UILabel alloc] initWithFrame:CGRectMake(0 , 184, 320, 150)];
     exerciseDescription.numberOfLines = 0;
     exerciseDescription.text = [[self.workout objectAtIndex:workoutIndex.intValue] description];
         exerciseDescription.backgroundColor = [UIColor clearColor];
