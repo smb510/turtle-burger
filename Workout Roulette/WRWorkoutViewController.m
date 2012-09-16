@@ -50,36 +50,6 @@
     }
     return self;
 }
-/*static BOOL WRAccelerationIsShaking(UIAcceleration* last, UIAcceleration* current, double threshold) {
-    double
-    deltaX = fabs(last.x - current.x),
-    deltaY = fabs(last.y - current.y),
-    deltaZ = fabs(last.z - current.z);
-    
-    return
-    (deltaX > threshold && deltaY > threshold) ||
-    (deltaX > threshold && deltaZ > threshold) ||
-    (deltaY > threshold && deltaZ > threshold);
-}
-- (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
-    
-    if (self.lastAcceleration) {
-        if (!histeresisExcited && WRAccelerationIsShaking(self.lastAcceleration, acceleration, 0.7)) {
-            histeresisExcited = YES;
-            
-            /* SHAKE DETECTED. DO HERE WHAT YOU WANT. *
-            [[NSNotificationCenter defaultCenter] postNotificationName:CreateWorkoutNotification object:self];
-            //if(self.workout.count>0)
-             //   exerciseTitle.text = [[self.workout objectAtIndex:0] description];
-            
-            NSLog(@"detected shake!");
-        } else if (histeresisExcited && !WRAccelerationIsShaking(self.lastAcceleration, acceleration, 0.2)) {
-            histeresisExcited = NO;
-        }
-    }
-    
-    self.lastAcceleration = acceleration;
-}*/
 -(BOOL)canBecomeFirstResponder {
     return YES;
 }
