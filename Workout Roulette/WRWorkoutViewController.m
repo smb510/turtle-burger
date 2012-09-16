@@ -71,6 +71,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.navigationBarHidden=NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateWorkouts:) name:UpdateWorkoutsNotification object:nil];
     musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     UIView* musicWidget = [[UIView alloc] initWithFrame:CGRectMake(0, 160, 320, 140)];
