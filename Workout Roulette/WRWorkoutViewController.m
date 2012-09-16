@@ -127,18 +127,25 @@
     [timer setFont:[UIFont systemFontOfSize:64.0f]];
     timer.frame = CGRectMake(0, 0, 320, 100);
     timer.textAlignment = UITextAlignmentCenter;
+    UIView* titleContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 320, 60)];
+    UIButton* infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
+    infoButton.frame = CGRectMake(290, 22, infoButton.frame.size.width, infoButton.frame.size.height);
+    [titleContainer addSubview:infoButton];
+    [infoButton addTarget:self action:@selector(showWorkoutInfo:) forControlEvents:UIControlEventTouchUpInside];
+    
     exerciseTitle = [[UILabel alloc] init];
 
 
     if(self.workout.count>0)
-        exerciseTitle.text = [[self.workout objectAtIndex:0] description];
-
-    exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] description];
+    {
+    exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] title];
+    }
 
     exerciseTitle.textAlignment = UITextAlignmentCenter;
-    exerciseTitle.frame = CGRectMake(0, 100, 320, 60);
+    exerciseTitle.frame = CGRectMake(0, 0, 290, 60);
+    [titleContainer addSubview:exerciseTitle];
     [self.view addSubview:musicWidget];
-    [self.view addSubview:exerciseTitle];
+    [self.view addSubview:titleContainer];
     [self.view addSubview:done];
     [self.view addSubview:timer];
     [self.view setNeedsDisplay];
@@ -321,7 +328,13 @@
 -(void) updateTimer:(NSTimer*) timerz
 {
     self.secondsRemaining -= 1;
-    self.timer.text =[NSString stringWithFormat:@"%d:%d", (self.secondsRemaining / 60), self.secondsRemaining % 60 ];
+    if (self.secondsRemaining % 60 < 10) {
+        self.timer.text =[NSString stringWithFormat:@"%d:0%d", (self.secondsRemaining / 60), self.secondsRemaining % 60 ];
+    }
+    else
+    {
+    self.timer.text =[NSString stringWithFormat:@"%2d:%2d", (self.secondsRemaining / 60), self.secondsRemaining % 60 ];
+    }
     if(self.secondsRemaining == 0)
     {
         [timerz invalidate];
@@ -350,5 +363,13 @@
 }
 }
 
+
+-(void) showWorkoutInfo:(id)sender
+{
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Workout Details" message:[(WRExercise*)[self.workout objectAtIndex:workoutIndex.intValue] description] delegate:nil cancelButtonTitle:@"Thanks for the info, bro!" otherButtonTitles: nil];
+    [alert show];
+        
+    
+}
 
 @end
