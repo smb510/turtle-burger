@@ -126,15 +126,17 @@
     
     self.view = [[UIView alloc] init];
     self.view.frame = CGRectMake(0, 0, 320, 480);
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg3"]]];
     
     
-    self.
-    done = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.done = [UIButton buttonWithType:UIButtonTypeCustom];
     done.frame = CGRectMake(60, 340, 200, 50);
     [done setBackgroundImage:[UIImage imageNamed:@"start"] forState:UIControlStateNormal];
     //[done setTitle:@"Start" forState:UIControlStateNormal];
     [done addTarget:self action:@selector(nextWorkout:) forControlEvents:UIControlEventTouchUpInside];
     timer = [[UILabel alloc] init];
+    [timer setTextColor:[UIColor whiteColor]];
+    [timer setBackgroundColor:[UIColor clearColor]];
     if(workout.count > 0)
     {
         timer.text =[NSString stringWithFormat:@"%d:00", [[(WRExercise*)[self.workout objectAtIndex:workoutIndex.intValue] duration] intValue]];
@@ -153,10 +155,15 @@
 
     exerciseTitle.textAlignment = UITextAlignmentCenter;
     exerciseTitle.frame = CGRectMake(0, 0, 320, 30);
+    [exerciseTitle setBackgroundColor:[UIColor clearColor]];
+    [exerciseTitle setTextColor:[UIColor whiteColor]];
+    
     
     exerciseDescription = [[UILabel alloc] initWithFrame:CGRectMake(0 , 199, 320, 150)];
     exerciseDescription.numberOfLines = 0;
     exerciseDescription.text = [[self.workout objectAtIndex:workoutIndex.intValue] description];
+        exerciseDescription.backgroundColor = [UIColor clearColor];
+    exerciseDescription.textColor = [UIColor whiteColor];
     [self.view addSubview:exerciseDescription];
     [self.view bringSubviewToFront:exerciseDescription];
     [self.view addSubview:musicWidget];
@@ -165,6 +172,8 @@
     [self.view addSubview:timer];
     [self.view setNeedsDisplay];
     self.count = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    [self.count setBackgroundColor:[UIColor clearColor]];
+    [self.count setTextColor:[UIColor whiteColor]];
     [count setText:[NSString stringWithFormat:@"%d of %d", self.workoutIndex.intValue + 1, self.workout.count]];
     [self.view addSubview:count];
     

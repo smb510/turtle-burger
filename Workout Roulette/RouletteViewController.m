@@ -56,7 +56,9 @@
     [workoutPickerView selectRow:1 inComponent:0 animated:NO];*/
     [timePickerView selectRow:1 inComponent:0 animated:NO];
     [timePickerView selectRow:1 inComponent:1 animated:NO];
-    UIButton * createWorkout=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton * createWorkout=[UIButton buttonWithType:UIButtonTypeCustom];
+    [createWorkout setBackgroundImage:[UIImage imageNamed:@"nextworkoutbutton"] forState:UIControlStateNormal];
+    [createWorkout setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     createWorkout.frame=CGRectMake(screenWidth*.5-50, screenHeight*.8, 100, 50);
     //createWorkout.backgroundColor=[UIColor blueColor];
     [createWorkout setTitle:@"Workout!" forState:UIControlStateNormal];
