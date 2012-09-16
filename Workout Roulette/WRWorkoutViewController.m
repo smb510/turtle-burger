@@ -20,6 +20,7 @@
 }
 
 @property (nonatomic, strong) UILabel* exerciseTitle;
+@property (nonatomic, strong) UILabel* exerciseDescription;
 @property (nonatomic, strong) UILabel* timer;
 @property (nonatomic, strong) UIButton* done;
 @property (nonatomic, strong) UILabel* count;
@@ -36,7 +37,7 @@
 @implementation WRWorkoutViewController
 
 
-@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout, workoutIndex, count, secondsRemaining, timerCounter, hud;
+@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout, workoutIndex, count, secondsRemaining, timerCounter, hud, exerciseDescription;
 
 
 
@@ -134,22 +135,23 @@
     [timer setFont:[UIFont systemFontOfSize:64.0f]];
     timer.frame = CGRectMake(0, 0, 320, 100);
     timer.textAlignment = UITextAlignmentCenter;
-    UIView* titleContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 320, 60)];
-    UIButton* infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
-    infoButton.frame = CGRectMake(290, 22, infoButton.frame.size.width, infoButton.frame.size.height);
-    [titleContainer addSubview:infoButton];
-    [infoButton addTarget:self action:@selector(showWorkoutInfo:) forControlEvents:UIControlEventTouchUpInside];
-    
+    UIView* titleContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 200, 320, 20)];
+
     exerciseTitle = [[UILabel alloc] init];
 
-
+    [titleContainer addSubview:exerciseTitle];
    
     exerciseTitle.numberOfLines=0;
-    exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] description];
+    exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] title];
 
     exerciseTitle.textAlignment = UITextAlignmentCenter;
-    exerciseTitle.frame = CGRectMake(0, 160, 320, 150);
-
+    exerciseTitle.frame = CGRectMake(0, 0, 320, 30);
+    
+    exerciseDescription = [[UILabel alloc] initWithFrame:CGRectMake(0 , 220, 320, 150)];
+    exerciseDescription.numberOfLines = 0;
+    exerciseDescription.text = [[self.workout objectAtIndex:workoutIndex.intValue] description];
+    [self.view addSubview:exerciseDescription];
+    [self.view bringSubviewToFront:exerciseDescription];
     [self.view addSubview:musicWidget];
     [self.view addSubview:titleContainer];
     [self.view addSubview:done];
@@ -323,8 +325,9 @@
             //timer.frame = CGRectMake(0, 0, 320, 100);
             timer.textAlignment = UITextAlignmentCenter;
             exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] title];
+            exerciseDescription.text = [[self.workout objectAtIndex:workoutIndex.intValue] description];
             exerciseTitle.textAlignment = UITextAlignmentCenter;
-            //exerciseTitle.frame = CGRectMake(0, 100, 320, 60);
+            exerciseTitle.frame = CGRectMake(0, 100, 320, 60);
             
             
         }
@@ -360,6 +363,7 @@
             //timer.frame = CGRectMake(0, 0, 320, 100);
             timer.textAlignment = UITextAlignmentCenter;
             exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] title];
+            exerciseDescription.text = [[self.workout objectAtIndex:workoutIndex.intValue] description];
             exerciseTitle.textAlignment = UITextAlignmentCenter;
             //exerciseTitle.frame = CGRectMake(0, 100, 320, 60);
             
