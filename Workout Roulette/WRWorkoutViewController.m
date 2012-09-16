@@ -10,6 +10,10 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface WRWorkoutViewController ()
+{
+    BOOL histeresisExcited;
+    UIAcceleration* lastAcceleration;
+}
 
 @property (nonatomic, strong) UILabel* exerciseTitle;
 @property (nonatomic, strong) UILabel* timer;
@@ -17,11 +21,12 @@
 @property (nonatomic, strong) MPMusicPlayerController* musicPlayer;
 @property (nonatomic, strong) MPMediaPickerController* mediaPicker;
 @property (nonatomic, strong) NSArray* workout;
+@property(nonatomic, strong) UIAcceleration* lastAcceleration;
 @end
 
 @implementation WRWorkoutViewController
 
-@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout;
+@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout,lastAcceleration;
 
 
 -(id) initWithCMStore:(NSArray *)workouts
@@ -30,6 +35,7 @@
     if(self)
     {
     self.workout = workouts;
+        [UIAccelerometer sharedAccelerometer].delegate = self;
     }
     return self;
 }
@@ -43,7 +49,33 @@
     }
     return self;
 }
-
+static BOOL WRAccelerationIsShaking(UIAcceleration* last, UIAcceleration* current, double threshold) {
+    double
+    deltaX = fabs(last.x - current.x),
+    deltaY = fabs(last.y - current.y),
+    deltaZ = fabs(last.z - current.z);
+    
+    return
+    (deltaX > threshold && deltaY > threshold) ||
+    (deltaX > threshold && deltaZ > threshold) ||
+    (deltaY > threshold && deltaZ > threshold);
+}
+- (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+    
+    if (self.lastAcceleration) {
+        if (!histeresisExcited && L0AccelerationIsShaking(self.lastAcceleration, acceleration, 0.7)) {
+            histeresisExcited = YES;
+            
+            /* SHAKE DETECTED. DO HERE WHAT YOU WANT. */
+            
+            
+        } else if (histeresisExcited && !L0AccelerationIsShaking(self.lastAcceleration, acceleration, 0.2)) {
+            histeresisExcited = NO;
+        }
+    }
+    
+    self.lastAcceleration = acceleration;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
