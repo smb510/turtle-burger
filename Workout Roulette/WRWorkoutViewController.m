@@ -74,13 +74,13 @@
     self.navigationController.navigationBarHidden=NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateWorkouts:) name:UpdateWorkoutsNotification object:nil];
     musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-    UIView* musicWidget = [[UIView alloc] initWithFrame:CGRectMake(0, 160, 320, 140)];
+    UIView* musicWidget = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 320, 140)];
     MPMediaItem* nowPlaying = [musicPlayer nowPlayingItem];
     //if (nowPlaying == nil)
     //{
     UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button setTitle:@"Select Playlist" forState:UIControlStateNormal];
-    [button setFrame:CGRectMake(0, 0, 320, 48)];
+    [button setFrame:CGRectMake(0, 50, 320, 48)];
     [button addTarget:self action:@selector(selectPlaylist:) forControlEvents:UIControlEventTouchUpInside];
     [musicWidget addSubview:button];
     //}
@@ -137,14 +137,13 @@
     exerciseTitle = [[UILabel alloc] init];
 
 
-    if(self.workout.count>0)
-    {
-    exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] title];
-    }
+   
+    exerciseTitle.numberOfLines=0;
+    exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] description];
 
     exerciseTitle.textAlignment = UITextAlignmentCenter;
-    exerciseTitle.frame = CGRectMake(0, 0, 290, 60);
-    [titleContainer addSubview:exerciseTitle];
+    exerciseTitle.frame = CGRectMake(0, 160, 320, 150);
+
     [self.view addSubview:musicWidget];
     [self.view addSubview:titleContainer];
     [self.view addSubview:done];
