@@ -31,11 +31,16 @@
     }
     return self;
 }
-
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden=YES;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor grayColor];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createWorkoutFromNotification:) name:CreateWorkoutNotification object:nil];
     
     float screenWidth=[UIScreen mainScreen].bounds.size.width;
