@@ -14,14 +14,6 @@
 		C3223C8E1604315B006EBC60 /* green paper.png in Resources */ = {isa = PBXBuildFile; fileRef = C3223C8D1604315B006EBC60 /* green paper.png */; };
 		C3223C9116043641006EBC60 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3223C9016043641006EBC60 /* MediaPlayer.framework */; };
 		C3223C9416044056006EBC60 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C3223C9316044016006EBC60 /* MBProgressHUD.m */; };
-		C3B18B6716051B0100CAE941 /* MBBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B18B5316051B0100CAE941 /* MBBaseRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C3B18B6816051B0100CAE941 /* MBHTTPConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B18B5616051B0100CAE941 /* MBHTTPConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C3B18B6916051B0100CAE941 /* MBHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B18B5816051B0100CAE941 /* MBHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C3B18B6A16051B0100CAE941 /* MBImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B18B5A16051B0100CAE941 /* MBImageRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C3B18B6B16051B0100CAE941 /* MBJSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B18B5C16051B0100CAE941 /* MBJSONRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C3B18B6C16051B0100CAE941 /* MBRequestError.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B18B5F16051B0100CAE941 /* MBRequestError.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C3B18B6D16051B0100CAE941 /* MBURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B18B6316051B0100CAE941 /* MBURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C3B18B6E16051B0100CAE941 /* MBXMLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B18B6616051B0100CAE941 /* MBXMLRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C3F1692316040E6A00C0CE12 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692216040E6A00C0CE12 /* UIKit.framework */; };
 		C3F1692516040E6A00C0CE12 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692416040E6A00C0CE12 /* Foundation.framework */; };
 		C3F1692716040E6A00C0CE12 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F1692616040E6A00C0CE12 /* CoreGraphics.framework */; };
@@ -296,14 +288,6 @@
 				C3223C7F16041EA6006EBC60 /* WRWorkout.m in Sources */,
 				C3223C83160420AE006EBC60 /* WRExercise.m in Sources */,
 				C3223C8B16042F54006EBC60 /* WRWorkoutViewController.m in Sources */,
-				C3B18B6716051B0100CAE941 /* MBBaseRequest.m in Sources */,
-				C3B18B6816051B0100CAE941 /* MBHTTPConnectionOperation.m in Sources */,
-				C3B18B6916051B0100CAE941 /* MBHTTPRequest.m in Sources */,
-				C3B18B6A16051B0100CAE941 /* MBImageRequest.m in Sources */,
-				C3B18B6B16051B0100CAE941 /* MBJSONRequest.m in Sources */,
-				C3B18B6C16051B0100CAE941 /* MBRequestError.m in Sources */,
-				C3B18B6D16051B0100CAE941 /* MBURLConnectionOperation.m in Sources */,
-				C3B18B6E16051B0100CAE941 /* MBXMLRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
