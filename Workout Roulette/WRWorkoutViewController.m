@@ -8,8 +8,9 @@
 
 #import "WRWorkoutViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "RouletteViewController.h"
 
-@interface WRWorkoutViewController ()
+@interface WRWorkoutViewController ()<UIAccelerometerDelegate>
 {
     BOOL histeresisExcited;
     UIAcceleration* lastAcceleration;
@@ -49,7 +50,7 @@
     }
     return self;
 }
-static BOOL WRAccelerationIsShaking(UIAcceleration* last, UIAcceleration* current, double threshold) {
+/*static BOOL WRAccelerationIsShaking(UIAcceleration* last, UIAcceleration* current, double threshold) {
     double
     deltaX = fabs(last.x - current.x),
     deltaY = fabs(last.y - current.y),
@@ -63,22 +64,29 @@ static BOOL WRAccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
 - (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
     
     if (self.lastAcceleration) {
-        if (!histeresisExcited && L0AccelerationIsShaking(self.lastAcceleration, acceleration, 0.7)) {
+        if (!histeresisExcited && WRAccelerationIsShaking(self.lastAcceleration, acceleration, 0.7)) {
             histeresisExcited = YES;
             
-            /* SHAKE DETECTED. DO HERE WHAT YOU WANT. */
+            /* SHAKE DETECTED. DO HERE WHAT YOU WANT. *
+            [[NSNotificationCenter defaultCenter] postNotificationName:CreateWorkoutNotification object:self];
+            //if(self.workout.count>0)
+             //   exerciseTitle.text = [[self.workout objectAtIndex:0] description];
             
-            
-        } else if (histeresisExcited && !L0AccelerationIsShaking(self.lastAcceleration, acceleration, 0.2)) {
+            NSLog(@"detected shake!");
+        } else if (histeresisExcited && !WRAccelerationIsShaking(self.lastAcceleration, acceleration, 0.2)) {
             histeresisExcited = NO;
         }
     }
     
     self.lastAcceleration = acceleration;
+}*/
+-(BOOL)canBecomeFirstResponder {
+    return YES;
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateWorkouts:) name:UpdateWorkoutsNotification object:nil];
     musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     UIView* musicWidget = [[UIView alloc] initWithFrame:CGRectMake(0, 160, 320, 140)];
     MPMediaItem* nowPlaying = [musicPlayer nowPlayingItem];
@@ -129,7 +137,8 @@ static BOOL WRAccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
     timer.frame = CGRectMake(0, 0, 320, 100);
     timer.textAlignment = UITextAlignmentCenter;
     exerciseTitle = [[UILabel alloc] init];
-    exerciseTitle.text = [[self.workout objectAtIndex:0] description];
+    if(self.workout.count>0)
+        exerciseTitle.text = [[self.workout objectAtIndex:0] description];
     exerciseTitle.textAlignment = UITextAlignmentCenter;
     exerciseTitle.frame = CGRectMake(0, 100, 320, 60);
     [self.view addSubview:musicWidget];
@@ -154,7 +163,7 @@ static BOOL WRAccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
     [musicPlayer beginGeneratingPlaybackNotifications];
     
     [musicPlayer setQueueWithQuery: [MPMediaQuery songsQuery]];
-    [musicPlayer play];
+    //[musicPlayer play];
     MPMusicPlayerController* ipodMusicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     
     [ipodMusicPlayer setShuffleMode: MPMusicShuffleModeOff];
@@ -209,8 +218,23 @@ static BOOL WRAccelerationIsShaking(UIAcceleration* last, UIAcceleration* curren
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     [self becomeFirstResponder];
 }
-
-
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if (motion == UIEventSubtypeMotionShake)
+    {
+        // your code
+        [[NSNotificationCenter defaultCenter] postNotificationName:CreateWorkoutNotification object:self];
+        
+        NSLog(@"detected shake!");
+    }
+}
+-(void) updateWorkouts:(NSNotification *) notification
+{
+    self.workout=[notification.userInfo objectForKey:@"workout"];
+    if(self.workout.count>0)
+        exerciseTitle.text = [[self.workout objectAtIndex:0] description];
+    NSLog(@"getting new workout which equals %@",self.workout);
+}
 - (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
     
     if (receivedEvent.type == UIEventTypeRemoteControl) {

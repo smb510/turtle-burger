@@ -36,6 +36,8 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor grayColor];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createWorkoutFromNotification:) name:CreateWorkoutNotification object:nil];
+    
     float screenWidth=[UIScreen mainScreen].bounds.size.width;
     float screenHeight=[UIScreen mainScreen].bounds.size.height;
     timePickerView= [[UIPickerView alloc] initWithFrame:CGRectMake(screenWidth*.5-100, screenHeight*.15-50, 200, 100)];
@@ -69,6 +71,12 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+-(void) createWorkoutFromNotification:(NSNotification*) notification
+{
+    NSLog(@"in create workout from notification");
+    [self createWorkout:nil];
+    
+}
 -(IBAction) createWorkout:(UIButton *) sender
 {
     
@@ -86,6 +94,9 @@
             running_time += [ex.duration intValue];
         }
         WRWorkoutViewController* wvc = [[WRWorkoutViewController alloc] initWithCMStore:workout];
+        if (!sender) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:UpdateWorkoutsNotification object:self userInfo:[NSDictionary dictionaryWithObject:workout forKey:@"workout"]];
+        }
         [self presentModalViewController:wvc animated:YES];
     }];
 }

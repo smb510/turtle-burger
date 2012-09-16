@@ -14,3 +14,5 @@
 -(IBAction)createWorkout:(id)sender;
 
 @end
+#define CreateWorkoutNotification @"CreateWorkoutNotification"
+#define UpdateWorkoutsNotification @"UpdateWorkoutsNotification"

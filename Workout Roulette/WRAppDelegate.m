@@ -24,6 +24,9 @@
     CMAPICredentials* creds = [CMAPICredentials sharedInstance];
     creds.appIdentifier = CM_APP_ID;
     creds.appSecret = CM_API_KEY;
+    
+    application.applicationSupportsShakeToEdit = YES;
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.rootViewController = [[RouletteViewController alloc] init];
