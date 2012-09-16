@@ -1,7 +1,7 @@
 <html>
 <title>Workout Form</title>
 <head>
-<link rel="stylesheet" href="default.css" media="screen" />
+<!--<link rel="stylesheet" href="default.css" media="screen" /> -->
 <script src="./exercise.js"></script>
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://cloud.github.com/downloads/cloudmine/cloudmine-js/cloudmine-0.9.2.js"></script>
@@ -39,18 +39,17 @@ function saveInfo(){
 	var exercise = new WRExercise();
 	exercise.setType(data.type);
 	exercise.setDescription(data.desc);
-	exercise.setDuration($("#duration").val());
 	exercise.__class__ = "WRExercise";
 	
 	ws.set(null, exercise).on('success', function(){
 		updateForm();
 		
-	});
+	}); 
 	
-/*	ws.update(key,exercise).on('success', function(){
+/*	ws.update(key,data).on('success', function(){
 		updateForm();
-	}, opts);
-	*/
+	}, opts); */
+	
 	//clear the form
 	$('#message').val('');
 };
@@ -85,29 +84,24 @@ function saveInfo(){
 <div id="container">
 	<h1>WORKOUT FORM</h1>
 <div class="input-box">	
-	<label>All previous data</label>
-        <textarea id="display"></textarea>
+	<label>All previous data <br></label>
+        <textarea id="display" cols="60" rows="20"></textarea>
     <div id="workout-info-message"></div>
+	<br> 
     <div class="input-box">
-        <label>Type</label>
-        <textarea id="type"></textarea>
+        <label>Type<br></label>
+        <textarea id="type" cols="60"></textarea>
     </div>
     <div class="input-box">
-        <label>Description</label>
-        <textarea id="desc"></textarea>
-    </div>
-	<div class="input-box">
-        <label>Duration</label>
-        <textarea id="duration"></textarea>
+	<br>
+        <label>Description<br></label>
+        <textarea id="desc" cols = "60"></textarea>
     </div>
 	<br>
 	<br>
-	<center>
-    <div class="submit">
+    <div class="submit" align="left">
         <input type="submit" value="Submit" onClick="saveInfo()"/>
     </div>
-	</center>
-	
 </div>
 </body>
 </html>

@@ -73,10 +73,8 @@
     
     NSString* timeParam =  [self pickerView:timePickerView titleForRow:[timePickerView selectedRowInComponent:0] forComponent:0];
     NSString* typeParam = [self pickerView:workoutPickerView titleForRow:[workoutPickerView selectedRowInComponent:0] forComponent:0];
-    
     CMStore* store = [CMStore defaultStore];
-    
-    [store searchObjects:@"[type = \"Running\"]" additionalOptions:nil callback:^(CMObjectFetchResponse *response) {
+    [store searchObjects:[NSString stringWithFormat:@"[type = \"%@\"]", typeParam] additionalOptions:nil callback:^(CMObjectFetchResponse *response) {
         NSMutableArray* exercises = [NSMutableArray arrayWithArray:response.objects];
         NSMutableArray* workout = [NSMutableArray arrayWithCapacity:1];
         int running_time = 0;
@@ -88,15 +86,7 @@
         }
         WRWorkoutViewController* wvc = [[WRWorkoutViewController alloc] initWithCMStore:workout];
         [self presentModalViewController:wvc animated:YES];
-        
     }];
-    
-    
-    
-   /* [store allObjectsWithOptions:nil callback:^(CMObjectFetchResponse *response) {
-        NSLog(@"All objects");
-    } ];*/
-    
 }
 #pragma mark - UIPickerViewDelegate
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component {
