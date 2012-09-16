@@ -145,7 +145,7 @@
     exerciseTitle.frame = CGRectMake(0, 160, 320, 150);
 
     [self.view addSubview:musicWidget];
-    [self.view addSubview:titleContainer];
+    //[self.view addSubview:titleContainer];
     [self.view addSubview:done];
     [self.view addSubview:timer];
     [self.view setNeedsDisplay];
@@ -318,7 +318,7 @@
             timer.textAlignment = UITextAlignmentCenter;
             exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] title];
             exerciseTitle.textAlignment = UITextAlignmentCenter;
-            //exerciseTitle.frame = CGRectMake(0, 100, 320, 60);
+            exerciseTitle.frame = CGRectMake(0, 100, 320, 60);
             
             
         }
