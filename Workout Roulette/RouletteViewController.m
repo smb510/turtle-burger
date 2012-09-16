@@ -105,7 +105,7 @@
         if (!sender) {
             [[NSNotificationCenter defaultCenter] postNotificationName:UpdateWorkoutsNotification object:self userInfo:[NSDictionary dictionaryWithObject:workout forKey:@"workout"]];
         }
-        [self presentModalViewController:wvc animated:YES];
+        [self.navigationController pushViewController:wvc animated:YES];
     }];
 }
 #pragma mark - UIPickerViewDelegate
