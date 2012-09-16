@@ -23,11 +23,15 @@
 @property (nonatomic, strong) MPMediaPickerController* mediaPicker;
 @property (nonatomic, strong) NSArray* workout;
 @property(nonatomic, strong) UIAcceleration* lastAcceleration;
+@property (nonatomic, strong) NSNumber* workoutIndex;
 @end
 
 @implementation WRWorkoutViewController
 
+
 @synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout,lastAcceleration;
+ 
+
 
 
 -(id) initWithCMStore:(NSArray *)workouts
@@ -36,7 +40,10 @@
     if(self)
     {
     self.workout = workouts;
+
         [UIAccelerometer sharedAccelerometer].delegate = self;
+        self.workoutIndex = [NSNumber numberWithInt:0];
+
     }
     return self;
 }
@@ -107,8 +114,12 @@
     timer.frame = CGRectMake(0, 0, 320, 100);
     timer.textAlignment = UITextAlignmentCenter;
     exerciseTitle = [[UILabel alloc] init];
+
     if(self.workout.count>0)
         exerciseTitle.text = [[self.workout objectAtIndex:0] description];
+
+    exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] description];
+
     exerciseTitle.textAlignment = UITextAlignmentCenter;
     exerciseTitle.frame = CGRectMake(0, 100, 320, 60);
     [self.view addSubview:musicWidget];

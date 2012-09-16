@@ -1,79 +1,70 @@
-function WRWorkout(obj)
-{if(obj != undefined)
-	{
-	this.duration = obj.duration;
-	this.exercises = obj.exercises;
-}
-else
-{
-	this.duration = 0;
-	this.exercises = [];
-}
+/*function WRWorkout(obj) {
+	if (obj != undefined) {
+		this.duration = obj.duration;
+		this.exercises = obj.exercises;
+	} else {
+		this.duration = 0;
+		this.exercises = [];
+	}
 }
 
 
 WRWorkout.prototype = {
 	__class__: 'WRWorkout',
-	
-	setDuration : function(duration)
-	{
+
+	setDuration: function(duration) {
 		this.duration = duration;
 	},
-	
-	setExercises : function(exercises)
-	{
+
+	setExercises: function(exercises) {
 		this.exercises = exercises;
 	},
-	
-	addExercise : function(exercise)
-	{
+
+	addExercise: function(exercise) {
 		this.exercises.push(exercise);
-		
+
 	}
 }
 
+*/
 
+function WRExercise(obj) {
+	if (obj === undefined) {
+		this.type = "";
+		this.duration = 0;
+		this.description = "";
+		this.title = "";
+		this.__id__ = "";
 
-function WRExercise(obj)
-{
-	if(obj === undefined)
-	{
-		
+	} else {
+		this.type = obj.type;
+		this.duration = obj.duration;
+		this.description = obj.description;
+		this.title = title;
+		this.__id__ = obj.__id__;
 	}
-	else
-	{
-	this.type = obj.type;
-	this.duration = obj.duration;
-	this.description = obj.description;
-	this.title = title;
-	this.__id__ = obj.__id__;
-	}	
+	
+	return this;
 }
 
 WRExercise.prototype = {
-	
+
 	__class__: 'WRExercise',
-	
-	setDuration : function(duration)
-	{
+
+	setDuration: function(duration) {
 		this.duration = duration;
 	},
-	
-	setType : function(type)
-	{
+
+	setType: function(type) {
 		this.type = type;
 	},
-	setDescription : function(description)
-	{
+	setDescription: function(description) {
 		this.description = description;
-	}	
-	setId : function(id)
-	{
+	},
+	setId: function(id) {
 		this.__id__ = id;
 	},
-	setTitle : function (title)
-	{
+	setTitle: function(title) {
 		this.title = title;
 	}
 }
- 
