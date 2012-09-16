@@ -45,6 +45,8 @@ function saveInfo(){
 	
 	ws.set(null, exercise).on('success', function(){
 		updateForm();
+		alert("Workout submitted.");
+		$("textarea").val("");
 		
 	}); 
 	
@@ -98,6 +100,10 @@ function saveInfo(){
     <div class="input-box">
         <label>Type<br></label>
         <textarea id="type" cols="60"></textarea>
+    </div>
+	<div class="input-box">
+        <label>Duration(minutes)<br></label>
+        <textarea id="duration" cols="60"></textarea>
     </div>
     <div class="input-box">
 	<br>

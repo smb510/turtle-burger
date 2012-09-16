@@ -17,11 +17,12 @@
 @property (nonatomic, strong) MPMusicPlayerController* musicPlayer;
 @property (nonatomic, strong) MPMediaPickerController* mediaPicker;
 @property (nonatomic, strong) NSArray* workout;
+@property (nonatomic, strong) NSNumber* workoutIndex;
 @end
 
 @implementation WRWorkoutViewController
 
-@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout;
+@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout, workoutIndex;
 
 
 -(id) initWithCMStore:(NSArray *)workouts
@@ -30,6 +31,7 @@
     if(self)
     {
     self.workout = workouts;
+        self.workoutIndex = [NSNumber numberWithInt:0];
     }
     return self;
 }
@@ -97,7 +99,7 @@
     timer.frame = CGRectMake(0, 0, 320, 100);
     timer.textAlignment = UITextAlignmentCenter;
     exerciseTitle = [[UILabel alloc] init];
-    exerciseTitle.text = [[self.workout objectAtIndex:0] description];
+    exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] description];
     exerciseTitle.textAlignment = UITextAlignmentCenter;
     exerciseTitle.frame = CGRectMake(0, 100, 320, 60);
     [self.view addSubview:musicWidget];
