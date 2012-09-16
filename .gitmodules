@@ -1,3 +1,6 @@
 [submodule "MKNetworkKit"]
 	path = MKNetworkKit
 	url = git@github.com:MugunthKumar/MKNetworkKit.git
+[submodule "Submodules/UAModalPanel"]
+	path = Submodules/UAModalPanel
+	url = git://github.com/coneybeare/UAModalPanel.git
