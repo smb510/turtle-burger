@@ -9,6 +9,7 @@
 #import "WRWorkoutViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "RouletteViewController.h"
+#import "MBProgressHUD.h"
 
 @interface WRWorkoutViewController ()<UIAccelerometerDelegate>
 {
@@ -24,12 +25,13 @@
 @property (nonatomic, strong) NSArray* workout;
 @property(nonatomic, strong) UIAcceleration* lastAcceleration;
 @property (nonatomic, strong) NSNumber* workoutIndex;
+@property (nonatomic, strong) MBProgressHUD* hud;
 @end
 
 @implementation WRWorkoutViewController
 
 
-@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout,lastAcceleration;
+@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout,lastAcceleration,workoutIndex,hud;
  
 
 
@@ -205,7 +207,13 @@
     {
         // your code
         [[NSNotificationCenter defaultCenter] postNotificationName:CreateWorkoutNotification object:self];
-        
+        self.hud=[[MBProgressHUD alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2-200, self.view.bounds.size.height/2-25 , 400, 50)];
+        hud.center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"Creating new workout...";
+        [self.view addSubview:hud];
+        [hud show:YES];
+        hud.removeFromSuperViewOnHide=YES;
         NSLog(@"detected shake!");
     }
 }
@@ -214,6 +222,7 @@
     self.workout=[notification.userInfo objectForKey:@"workout"];
     if(self.workout.count>0)
         exerciseTitle.text = [[self.workout objectAtIndex:0] description];
+    [hud hide:YES];
     NSLog(@"getting new workout which equals %@",self.workout);
 }
 - (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
