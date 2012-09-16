@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSNumber* duration;
 @property (nonatomic, strong) NSString* description;
 @property (nonatomic, strong) NSString* url;
+@property (nonatomic, strong) NSString* title;
 
 
 -(id) init;

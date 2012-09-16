@@ -18,10 +18,11 @@
 @interface RouletteViewController ()<UIPickerViewDelegate>
 @property UIPickerView* timePickerView;
 @property UIPickerView* workoutPickerView;
+@property (nonatomic, assign) NSInteger workoutIndex;
 @end
 
 @implementation RouletteViewController
-@synthesize timePickerView,workoutPickerView;
+@synthesize timePickerView,workoutPickerView, workoutIndex;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -47,14 +48,14 @@
     [self.view addSubview:workoutPickerView];
     [workoutPickerView selectRow:1 inComponent:0 animated:NO];
     [timePickerView selectRow:1 inComponent:0 animated:NO];
-      
-    
     UIButton * createWorkout=[UIButton buttonWithType:UIButtonTypeRoundedRect];
     createWorkout.frame=CGRectMake(screenWidth*.5-50, screenHeight*.8, 100, 50);
     //createWorkout.backgroundColor=[UIColor blueColor];
     [createWorkout setTitle:@"Workout!" forState:UIControlStateNormal];
     [createWorkout addTarget:self action:@selector(createWorkout:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:createWorkout];
+    
+    
 	// Do any additional setup after loading the view.
 }
 
