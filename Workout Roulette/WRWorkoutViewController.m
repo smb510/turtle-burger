@@ -76,8 +76,14 @@
     musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     UIView* musicWidget = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 320, 140)];
     MPMediaItem* nowPlaying = [musicPlayer nowPlayingItem];
-    //if (nowPlaying == nil)
-    //{
+    if (nowPlaying == nil)
+    {
+        self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"Workout2.jpg" ]];
+    }
+    else 
+    {
+        self.view.backgroundColor=[UIColor colorWithPatternImage:[[nowPlaying valueForProperty:MPMediaItemPropertyArtwork]imageWithSize:CGSizeMake(320, 400)]  ];
+    }
     UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button setTitle:@"Select Playlist" forState:UIControlStateNormal];
     [button setFrame:CGRectMake(0, 50, 320, 48)];
