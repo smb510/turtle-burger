@@ -24,6 +24,7 @@
 @property (nonatomic, strong) UILabel* timer;
 @property (nonatomic, strong) UIButton* done;
 @property (nonatomic, strong) UILabel* count;
+@property (nonatomic, strong) UIButton* play;
 @property (nonatomic, strong) MPMusicPlayerController* musicPlayer;
 @property (nonatomic, strong) MPMediaPickerController* mediaPicker;
 @property (nonatomic, strong) NSArray* workout;
@@ -37,7 +38,7 @@
 @implementation WRWorkoutViewController
 
 
-@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout, workoutIndex, count, secondsRemaining, timerCounter, hud, exerciseDescription;
+@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout, workoutIndex, count, secondsRemaining, timerCounter, hud, exerciseDescription, play;
 
 
 
@@ -87,32 +88,35 @@
         UIImage* artWorkImage = [artwork imageWithSize: CGSizeMake (320, 420)];
         self.view.backgroundColor=[UIColor colorWithPatternImage:artWorkImage];
     }
-    UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"Select Playlist" forState:UIControlStateNormal];
-    [button setFrame:CGRectMake(0, 50, 320, 48)];
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setBackgroundImage:[UIImage imageNamed:@"playlist"] forState:UIControlStateNormal];
+    //[button setTitle:@"Select Playlist" forState:UIControlStateNormal];
+    [button setFrame:CGRectMake(240, 0, 78, 78)];
     [button addTarget:self action:@selector(selectPlaylist:) forControlEvents:UIControlEventTouchUpInside];
     [musicWidget addSubview:button];
     //}
     //else
     //{
-    UIButton* back = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    UIButton* play = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    UIButton* forward = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton* back = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.play = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton* forward = [UIButton buttonWithType:UIButtonTypeCustom];
     
     
     
-    back.frame = CGRectMake(0, 0, 80, 32);
-    [back setTitle:@"back" forState:UIControlStateNormal];
+    back.frame = CGRectMake(0, 0, 78, 78);
+    [back setBackgroundImage:[UIImage imageNamed:@"stepback"] forState:UIControlStateNormal];
+    [back setBackgroundColor:[UIColor clearColor]];
+    //[back setTitle:@"back" forState:UIControlStateNormal];
     [back addTarget:self action:@selector(skipPrevious) forControlEvents:UIControlEventTouchUpInside];
-    play.frame = CGRectMake(100, 0, 80, 32);
-    [play setTitle:@"play" forState:UIControlStateNormal];
+    
+    play.frame = CGRectMake(80, 0, 78, 78);
+    [play setBackgroundImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+    //[play setTitle:@"play" forState:UIControlStateNormal];
     [play addTarget:self action:@selector(togglePlayPause) forControlEvents:UIControlEventTouchUpInside];
-    forward.frame = CGRectMake(200, 0, 80, 32);
-    [forward setTitle:@"skip" forState:UIControlStateNormal];
+    forward.frame = CGRectMake(160, 0, 78, 78);
+    //[forward setTitle:@"skip" forState:UIControlStateNormal];
+    [forward setBackgroundImage:[UIImage imageNamed:@"stepforward"] forState:UIControlStateNormal];
     [forward addTarget:self action:@selector(skipNext) forControlEvents:UIControlEventTouchUpInside];
-    back.backgroundColor = [UIColor blueColor];
-    play.backgroundColor=[UIColor blueColor];
-    forward.backgroundColor=[UIColor blueColor];
     
     [musicWidget addSubview:back];
     [musicWidget addSubview:play];
@@ -125,9 +129,10 @@
     
     
     self.
-    done = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    done = [UIButton buttonWithType:UIButtonTypeCustom];
     done.frame = CGRectMake(60, 340, 200, 50);
-    [done setTitle:@"Start" forState:UIControlStateNormal];
+    [done setBackgroundImage:[UIImage imageNamed:@"start"] forState:UIControlStateNormal];
+    //[done setTitle:@"Start" forState:UIControlStateNormal];
     [done addTarget:self action:@selector(nextWorkout:) forControlEvents:UIControlEventTouchUpInside];
     timer = [[UILabel alloc] init];
     if(workout.count > 0)
@@ -137,7 +142,7 @@
     [timer setFont:[UIFont systemFontOfSize:64.0f]];
     timer.frame = CGRectMake(0, 0, 320, 100);
     timer.textAlignment = UITextAlignmentCenter;
-    UIView* titleContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 200, 320, 20)];
+    UIView* titleContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 179, 320, 20)];
 
     exerciseTitle = [[UILabel alloc] init];
 
@@ -149,7 +154,7 @@
     exerciseTitle.textAlignment = UITextAlignmentCenter;
     exerciseTitle.frame = CGRectMake(0, 0, 320, 30);
     
-    exerciseDescription = [[UILabel alloc] initWithFrame:CGRectMake(0 , 220, 320, 150)];
+    exerciseDescription = [[UILabel alloc] initWithFrame:CGRectMake(0 , 199, 320, 150)];
     exerciseDescription.numberOfLines = 0;
     exerciseDescription.text = [[self.workout objectAtIndex:workoutIndex.intValue] description];
     [self.view addSubview:exerciseDescription];
@@ -284,8 +289,11 @@
 - (void) togglePlayPause {
     if (musicPlayer.playbackState == MPMusicPlaybackStatePlaying) {
         [musicPlayer pause];
+        [self.play setBackgroundImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+        
     } else {
         [musicPlayer play];
+        [self.play setBackgroundImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
     }
 }
 -(void) skipPrevious
@@ -300,9 +308,9 @@
 
 -(void) nextWorkout:(id) sender
 {
-    if([[[sender titleLabel] text] isEqualToString:@"Start"])
+    if([[sender backgroundImageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"start"]])
     {
-        [sender setTitle:@"Next" forState:UIControlStateNormal];
+        [sender setBackgroundImage:[UIImage imageNamed:@"next"] forState:UIControlStateNormal];
         self.secondsRemaining = [[(WRExercise*)[self.workout objectAtIndex:workoutIndex.intValue] duration] intValue] * 60;
         self.timerCounter = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
         
@@ -314,14 +322,14 @@
         self.workoutIndex = [NSNumber numberWithInt:self.workoutIndex.intValue + 1];
         
         if (self.workoutIndex.intValue >= self.workout.count) {
-            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Workout Over" message:@"Great Job!" delegate:nil cancelButtonTitle:@"Dismiss:" otherButtonTitles: nil];
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Workout Over" message:@"Great Job!" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
             [alert show];
         }
         else
         {
             [count setText:[NSString stringWithFormat:@"%d of %d", self.workoutIndex.intValue + 1, self.workout.count]];
             /* Do "Advance workout" stuff */
-            [sender setTitle:@"Start" forState:UIControlStateNormal];
+            [sender setBackgroundImage:[UIImage imageNamed:@"start"] forState:UIControlStateNormal];
             timer.text =[NSString stringWithFormat:@"%d:00", [[(WRExercise*)[self.workout objectAtIndex:workoutIndex.intValue] duration] intValue]];
             [timer setFont:[UIFont systemFontOfSize:64.0f]];
             //timer.frame = CGRectMake(0, 0, 320, 100);
@@ -349,7 +357,9 @@
     if(self.secondsRemaining == 0)
     {
         [timerz invalidate];
-        [self.done setTitle:@"Start" forState:UIControlStateNormal];
+        
+        [self.done setBackgroundImage:[UIImage imageNamed:@"start"] forState:UIControlStateNormal];
+        
         self.workoutIndex = [NSNumber numberWithInt:self.workoutIndex.intValue + 1];
         [count setText:[NSString stringWithFormat:@"%d of %d", self.workoutIndex.intValue + 1, self.workout.count]];
         if (self.workoutIndex.intValue >= self.workout.count) {
@@ -381,6 +391,12 @@
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Workout Details" message:[(WRExercise*)[self.workout objectAtIndex:workoutIndex.intValue] description] delegate:nil cancelButtonTitle:@"Thanks for the info, bro!" otherButtonTitles: nil];
     [alert show];
         
+    
+}
+
+-(void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 
