@@ -71,10 +71,14 @@
 }
 -(IBAction) createWorkout:(UIButton *) sender
 {
-    
+    MBProgressHUD* hud= [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Spinning the wheel of fitness...";
     NSString* timeParam =  [self pickerView:timePickerView titleForRow:[timePickerView selectedRowInComponent:0] forComponent:0];
     NSString* typeParam = [self pickerView:workoutPickerView titleForRow:[workoutPickerView selectedRowInComponent:0] forComponent:0];
     CMStore* store = [CMStore defaultStore];
+    if ([typeParam isEqualToString:@"High Intensity Intervals"]) {
+        typeParam = @"HIIT";
+    }
     [store searchObjects:[NSString stringWithFormat:@"[type = \"%@\"]", typeParam] additionalOptions:nil callback:^(CMObjectFetchResponse *response) {
         NSMutableArray* exercises = [NSMutableArray arrayWithArray:response.objects];
         NSMutableArray* workout = [NSMutableArray arrayWithCapacity:1];
@@ -82,9 +86,13 @@
         while (running_time <= [timeParam intValue] * 0.85f && exercises.count > 0) {
             int index = arc4random() % exercises.count;
             WRExercise* ex =  [exercises objectAtIndex:index];
+            if(ex.duration.intValue < timeParam.intValue)
+            {
             [workout addObject:ex];
             running_time += [ex.duration intValue];
+            }
         }
+        [hud hide:YES];
         WRWorkoutViewController* wvc = [[WRWorkoutViewController alloc] initWithCMStore:workout];
         [self presentModalViewController:wvc animated:YES];
     }];
