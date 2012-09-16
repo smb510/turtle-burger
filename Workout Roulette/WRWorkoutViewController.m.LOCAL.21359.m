@@ -9,15 +9,8 @@
 #import "WRWorkoutViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "WRExercise.h"
-#import "RouletteViewController.h"
-#import "MBProgressHUD.h"
 
-
-@interface WRWorkoutViewController ()<UIAccelerometerDelegate>
-{
-    BOOL histeresisExcited;
-    UIAcceleration* lastAcceleration;
-}
+@interface WRWorkoutViewController ()
 
 @property (nonatomic, strong) UILabel* exerciseTitle;
 @property (nonatomic, strong) UILabel* timer;
@@ -26,18 +19,14 @@
 @property (nonatomic, strong) MPMusicPlayerController* musicPlayer;
 @property (nonatomic, strong) MPMediaPickerController* mediaPicker;
 @property (nonatomic, strong) NSArray* workout;
-@property(nonatomic, strong) UIAcceleration* lastAcceleration;
 @property (nonatomic, strong) NSNumber* workoutIndex;
 @property (nonatomic, assign) NSInteger secondsRemaining;
 @property (nonatomic, strong) NSTimer* timerCounter;
-@property (nonatomic, strong) MBProgressHUD* hud;
 @end
 
 @implementation WRWorkoutViewController
 
-
-@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout, workoutIndex, count, secondsRemaining, timerCounter, hud;
-
+@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout, workoutIndex, count, secondsRemaining, timerCounter;
 
 
 -(id) initWithCMStore:(NSArray *)workouts
@@ -45,13 +34,8 @@
     self = [super init];
     if(self)
     {
-
         self.workout = workouts;
-
-
-        [UIAccelerometer sharedAccelerometer].delegate = self;
         self.workoutIndex = [NSNumber numberWithInt:0];
-
     }
     return self;
 }
@@ -65,13 +49,10 @@
     }
     return self;
 }
--(BOOL)canBecomeFirstResponder {
-    return YES;
-}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateWorkouts:) name:UpdateWorkoutsNotification object:nil];
     musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     UIView* musicWidget = [[UIView alloc] initWithFrame:CGRectMake(0, 160, 320, 140)];
     MPMediaItem* nowPlaying = [musicPlayer nowPlayingItem];
@@ -128,13 +109,10 @@
     timer.frame = CGRectMake(0, 0, 320, 100);
     timer.textAlignment = UITextAlignmentCenter;
     exerciseTitle = [[UILabel alloc] init];
-
-
-    if(self.workout.count>0)
-        exerciseTitle.text = [[self.workout objectAtIndex:0] description];
-
-    exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] description];
-
+    if(workout.count > 0)
+    {
+        exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] title];
+    }
     exerciseTitle.textAlignment = UITextAlignmentCenter;
     exerciseTitle.frame = CGRectMake(0, 100, 320, 60);
     [self.view addSubview:musicWidget];
@@ -161,7 +139,7 @@
     [musicPlayer beginGeneratingPlaybackNotifications];
     
     [musicPlayer setQueueWithQuery: [MPMediaQuery songsQuery]];
-    //[musicPlayer play];
+    [musicPlayer play];
     MPMusicPlayerController* ipodMusicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     
     [ipodMusicPlayer setShuffleMode: MPMusicShuffleModeOff];
@@ -216,30 +194,8 @@
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     [self becomeFirstResponder];
 }
-- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
-{
-    if (motion == UIEventSubtypeMotionShake)
-    {
-        // your code
-        [[NSNotificationCenter defaultCenter] postNotificationName:CreateWorkoutNotification object:self];
-        self.hud= [[MBProgressHUD alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2-200, self.view.bounds.size.height/2-25 , 400, 50)];
-        hud.center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
-        hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"Creating new workout...";
-        [self.view addSubview:hud];
-        [hud show:YES];
-        hud.removeFromSuperViewOnHide=YES;
-        NSLog(@"detected shake!");
-    }
-}
--(void) updateWorkouts:(NSNotification *) notification
-{
-    self.workout=[notification.userInfo objectForKey:@"workout"];
-    if(self.workout.count>0)
-        exerciseTitle.text = [[self.workout objectAtIndex:0] description];
-    [hud hide:YES];
-    NSLog(@"getting new workout which equals %@",self.workout);
-}
+
+
 - (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
     
     if (receivedEvent.type == UIEventTypeRemoteControl) {

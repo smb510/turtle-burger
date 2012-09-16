@@ -8,10 +8,11 @@
 
 #import "WRWorkoutViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
+<<<<<<< HEAD
 #import "WRExercise.h"
+=======
 #import "RouletteViewController.h"
-#import "MBProgressHUD.h"
-
+>>>>>>> 10a382f1014f0a1a557c568e9c3d0e905a064177
 
 @interface WRWorkoutViewController ()<UIAccelerometerDelegate>
 {
@@ -30,14 +31,18 @@
 @property (nonatomic, strong) NSNumber* workoutIndex;
 @property (nonatomic, assign) NSInteger secondsRemaining;
 @property (nonatomic, strong) NSTimer* timerCounter;
-@property (nonatomic, strong) MBProgressHUD* hud;
 @end
 
 @implementation WRWorkoutViewController
 
+<<<<<<< HEAD
+@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout, workoutIndex, count, secondsRemaining, timerCounter;
+=======
 
-@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout, workoutIndex, count, secondsRemaining, timerCounter, hud;
+@synthesize exerciseTitle, timer, done, musicPlayer, mediaPicker, workout,lastAcceleration;
+ 
 
+>>>>>>> 10a382f1014f0a1a557c568e9c3d0e905a064177
 
 
 -(id) initWithCMStore:(NSArray *)workouts
@@ -45,11 +50,13 @@
     self = [super init];
     if(self)
     {
-
+<<<<<<< HEAD
         self.workout = workouts;
-
+=======
+    self.workout = workouts;
 
         [UIAccelerometer sharedAccelerometer].delegate = self;
+>>>>>>> 10a382f1014f0a1a557c568e9c3d0e905a064177
         self.workoutIndex = [NSNumber numberWithInt:0];
 
     }
@@ -128,13 +135,19 @@
     timer.frame = CGRectMake(0, 0, 320, 100);
     timer.textAlignment = UITextAlignmentCenter;
     exerciseTitle = [[UILabel alloc] init];
-
+<<<<<<< HEAD
+    if(workout.count > 0)
+    {
+        exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] title];
+    }
+=======
 
     if(self.workout.count>0)
         exerciseTitle.text = [[self.workout objectAtIndex:0] description];
 
     exerciseTitle.text = [[self.workout objectAtIndex:workoutIndex.intValue] description];
 
+>>>>>>> 10a382f1014f0a1a557c568e9c3d0e905a064177
     exerciseTitle.textAlignment = UITextAlignmentCenter;
     exerciseTitle.frame = CGRectMake(0, 100, 320, 60);
     [self.view addSubview:musicWidget];
@@ -222,13 +235,7 @@
     {
         // your code
         [[NSNotificationCenter defaultCenter] postNotificationName:CreateWorkoutNotification object:self];
-        self.hud= [[MBProgressHUD alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2-200, self.view.bounds.size.height/2-25 , 400, 50)];
-        hud.center = CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2);
-        hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"Creating new workout...";
-        [self.view addSubview:hud];
-        [hud show:YES];
-        hud.removeFromSuperViewOnHide=YES;
+        
         NSLog(@"detected shake!");
     }
 }
@@ -237,7 +244,6 @@
     self.workout=[notification.userInfo objectForKey:@"workout"];
     if(self.workout.count>0)
         exerciseTitle.text = [[self.workout objectAtIndex:0] description];
-    [hud hide:YES];
     NSLog(@"getting new workout which equals %@",self.workout);
 }
 - (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
