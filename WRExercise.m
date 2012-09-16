@@ -9,7 +9,8 @@
 #import "WRExercise.h"
 
 @implementation WRExercise
-@synthesize duration = _duration, type = _type, description = _description, url = _url;
+@synthesize duration = _duration, type = _type, description = _description, url = _url, title = _title;
+
 
 
 
@@ -20,6 +21,7 @@
     [aCoder encodeObject:_duration forKey:@"duration"];
     [aCoder encodeObject:_description forKey:@"description"];
     [aCoder encodeObject:_url forKey:@"url"];
+    [aCoder encodeObject:_title forKey:@"title"];
     
     
 }
@@ -32,6 +34,7 @@
         _duration = [aDecoder decodeObjectForKey:@"duration"];
         _description = [aDecoder decodeObjectForKey:@"description"];
         _url = [aDecoder decodeObjectForKey:@"url"];
+        _title = [aDecoder decodeObjectForKey:@"title"];
     }
     
     return self;

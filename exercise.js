@@ -45,6 +45,8 @@ function WRExercise(obj)
 	this.type = obj.type;
 	this.duration = obj.duration;
 	this.description = obj.description;
+	this.title = title;
+	this.__id__ = obj.__id__;
 	}	
 }
 
@@ -65,5 +67,13 @@ WRExercise.prototype = {
 	{
 		this.description = description;
 	}	
+	setId : function(id)
+	{
+		this.__id__ = id;
+	},
+	setTitle : function (title)
+	{
+		this.title = title;
+	}
 }
  
