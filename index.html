@@ -13,6 +13,16 @@ var ws = new cloudmine.WebService({
   apikey: '2c42264d08ea457f8431a40c27494e51'
 });
 
+ws.get().on('success', function(data, response) {
+  for(var key in data) {
+    var obj = data[key];
+    obj["__id__"] = key;
+    ws.update(key, obj).on('success', function() {
+      console.log("key " + key + " updated with __id__");
+    });
+  }
+});
+
 var opts = {
 	//can be used user auth and params
 };

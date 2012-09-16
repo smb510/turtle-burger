@@ -15,4 +15,7 @@
 @property (nonatomic, strong) NSString* description;
 @property (nonatomic, strong) NSString* url;
 
+
+-(id) init;
+
 @end
