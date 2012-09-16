@@ -83,7 +83,9 @@
     }
     else 
     {
-        self.view.backgroundColor=[UIColor colorWithPatternImage:[[nowPlaying valueForProperty:MPMediaItemPropertyArtwork]imageWithSize:CGSizeMake(320, 400)]  ];
+        MPMediaItemArtwork* artwork = [nowPlaying valueForProperty:MPMediaItemPropertyArtwork];
+        UIImage* artWorkImage = [artwork imageWithSize: CGSizeMake (320, 420)];
+        self.view.backgroundColor=[UIColor colorWithPatternImage:artWorkImage];
     }
     UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button setTitle:@"Select Playlist" forState:UIControlStateNormal];

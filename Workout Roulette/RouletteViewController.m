@@ -39,7 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg3.png"]];
+    self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"bgCheckers.png"] ];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createWorkoutFromNotification:) name:CreateWorkoutNotification object:nil];
     
